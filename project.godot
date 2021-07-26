@@ -9,18 +9,31 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "GameManager",
+"language": "GDScript",
+"path": "res://Scenes/Manager/GameManager.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://git_api.gdns"
+}, {
+"base": "Control",
+"class": "MainMenu",
+"language": "GDScript",
+"path": "res://Scenes/Menus/MainMenu/MainMenu.gd"
 } ]
 _global_script_class_icons={
-"GitAPI": ""
+"GameManager": "",
+"GitAPI": "",
+"MainMenu": ""
 }
 
 [application]
 
 config/name="TankAFaire"
+run/main_scene="res://Scenes/Manager/GameManager.tscn"
 config/icon="res://icon.png"
 
 [gdnative]
