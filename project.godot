@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "MainMenu",
 "language": "GDScript",
 "path": "res://Scenes/Menus/MainMenu/MainMenu.gd"
+}, {
+"base": "Control",
+"class": "TanckSelection",
+"language": "GDScript",
+"path": "res://Scenes/Menus/TankSelection/TankSelection.gd"
 } ]
 _global_script_class_icons={
 "GameManager": "",
 "GitAPI": "",
-"MainMenu": ""
+"MainMenu": "",
+"TanckSelection": ""
 }
 
 [application]
