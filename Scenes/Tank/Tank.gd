@@ -46,7 +46,10 @@ func _process(delta):
 	direction = direction.normalized()
 	translate(direction * _speed * delta)
 	
-	$Chassi.rotation.y = direction.angle_to(Vector3.FORWARD)
+	$Chassi.rotation.y = acos(direction.z)
+	if direction.x != 0 :
+		$Chassi.rotation *= sign(direction.x)
+	
 	
 	
 	pass
