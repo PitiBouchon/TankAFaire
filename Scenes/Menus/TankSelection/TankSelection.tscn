@@ -14,5 +14,8 @@ __meta__ = {
 margin_right = 100.0
 margin_bottom = 40.0
 text = "Next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="DevPlaceHolder" to="." method="_on_DevPlaceHolder_pressed"]
