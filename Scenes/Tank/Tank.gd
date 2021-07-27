@@ -3,6 +3,7 @@ class_name Tank
 
 var _playerNumber : int
 var _speed : float
+var _target : Vector3
 
 func loadData(data : TankData, player : int) -> void:
 	_playerNumber = player
@@ -31,9 +32,16 @@ func computeSpeed(data : TankData) -> float:
 	return 10.0
 
 
+
 func _process(delta):
+	processChassi(delta)
+	processTurret(delta)
+	pass
+
+
+func processChassi(delta) -> void:
 	var direction : Vector3 = Vector3.ZERO
-	if(_playerNumber == 1):
+	if _playerNumber == 1:
 		if Input.is_action_pressed("ui_right"):
 			direction.x += 1
 		if Input.is_action_pressed("ui_left"):
@@ -43,13 +51,26 @@ func _process(delta):
 		if Input.is_action_pressed("ui_down"):
 			direction.z += 1
 	
+	if _playerNumber == 2:
+		#need different control
+		pass
+	
 	direction = direction.normalized()
 	translate(direction * _speed * delta)
 	
 	$Chassi.rotation.y = acos(direction.z)
 	if direction.x != 0 :
 		$Chassi.rotation *= sign(direction.x)
-	
-	
-	
-	pass
+	return
+
+func updateTarget(pos : Vector3) -> void:
+	_target = pos
+	return
+
+func processTurret(delta) -> void:
+	var direction : Vector3 = _target - translation
+	direction = direction.normalized()
+	$Turret.rotation.y = acos(direction.z)
+	if direction.x != 0 :
+		$Turret.rotation *= sign(direction.x)
+	return
