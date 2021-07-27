@@ -7,7 +7,7 @@ script = ExtResource( 1 )
 
 [node name="Chassi" type="MeshInstance" parent="."]
 
-[node name="Track" type="MeshInstance" parent="."]
+[node name="Track" type="MeshInstance" parent="Chassi"]
 
 [node name="Turret" type="MeshInstance" parent="."]
 
