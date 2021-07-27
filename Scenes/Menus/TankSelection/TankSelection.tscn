@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Menus/TankSelection/TankSelection.gd" type="Script" id=1]
+[ext_resource path="res://Ressources/TankElement/Engine/Engine1.res" type="Resource" id=2]
+[ext_resource path="res://Ressources/TankElement/Track/Track1.res" type="Resource" id=3]
+[ext_resource path="res://Ressources/TankElement/Chassi/Chassi1.res" type="Resource" id=4]
+[ext_resource path="res://Ressources/TankElement/Turret/Turret1.res" type="Resource" id=5]
 
 [node name="TankSelection" type="Control"]
 anchor_right = 1.0
@@ -9,6 +13,10 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+chassiList = [ ExtResource( 4 ) ]
+engineList = [ ExtResource( 2 ) ]
+trackList = [ ExtResource( 3 ) ]
+turretList = [ ExtResource( 5 ) ]
 
 [node name="DevPlaceHolder" type="Button" parent="."]
 margin_right = 100.0

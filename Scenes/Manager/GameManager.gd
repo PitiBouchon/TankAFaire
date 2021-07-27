@@ -5,8 +5,9 @@ class_name GameManager
 
 var MAIN_MENU := preload("res://Scenes/Menus/MainMenu/MainMenu.tscn")
 var TANK_SELECTION := preload("res://Scenes/Menus/TankSelection/TankSelection.tscn")
+var ARENA_MANAGER := preload("res://Scenes/Manager/ArenaManager.tscn")
 
-enum GAME_STATE {MAIN_MENU, TANK_SELECTION}
+enum GAME_STATE {MAIN_MENU, TANK_SELECTION, MAIN_GAME}
 var gameState
 
 # Called when the node enters the scene tree for the first time.
@@ -34,8 +35,12 @@ func on_new_game():
 	
 	pass
 
-func on_tank_selected():
+func on_tank_selected(tankOne : TankData, tankTwo : TankData):
 	if gameState == GAME_STATE.TANK_SELECTION:
 		$TankSelection.queue_free()
-		print("tank selected")
+		var arenaManager : ArenaManager = ARENA_MANAGER.instance()
+		add_child(arenaManager)
+		arenaManager.inistanciateTank(tankOne, tankTwo)
+		
+		gameState = GAME_STATE.MAIN_GAME
 	pass

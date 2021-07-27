@@ -6,3 +6,5 @@ export (float) var speedFactor
 export (int) var maniabilityLevel
 
 export (Mesh) var trackMesh
+export (Vector3) var trackPos
+export (Vector3) var trackScale

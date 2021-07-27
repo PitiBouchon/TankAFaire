@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Spatial",
+"class": "ArenaManager",
+"language": "GDScript",
+"path": "res://Scenes/Manager/ArenaManager.gd"
+}, {
 "base": "Resource",
 "class": "ChassiData",
 "language": "GDScript",
@@ -39,6 +44,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Menus/TankSelection/TankSelection.gd"
 }, {
+"base": "Spatial",
+"class": "Tank",
+"language": "GDScript",
+"path": "res://Scenes/Tank/Tank.gd"
+}, {
+"base": "Resource",
+"class": "TankData",
+"language": "GDScript",
+"path": "res://Ressources/TankElement/TankData.gd"
+}, {
 "base": "Resource",
 "class": "TrackData",
 "language": "GDScript",
@@ -50,12 +65,15 @@ _global_script_classes=[ {
 "path": "res://Ressources/TankElement/Turret/TurretData.gd"
 } ]
 _global_script_class_icons={
+"ArenaManager": "",
 "ChassiData": "",
 "EngineData": "",
 "GameManager": "",
 "GitAPI": "",
 "MainMenu": "",
 "TanckSelection": "",
+"Tank": "",
+"TankData": "",
 "TrackData": "",
 "TurretData": ""
 }
