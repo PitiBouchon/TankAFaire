@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Menus/UI/UITankSelection.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Menus/UI/UIElementSelection.tscn" type="PackedScene" id=2]
+
+[node name="UITankSelection" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="Label" parent="."]
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 0.2
+text = "Stats
+X : 
+Y : 
+Z :"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Chassi" parent="." instance=ExtResource( 2 )]
+anchor_top = 0.2
+anchor_bottom = 0.35
+selectionName = "Chassi"
+
+[node name="Engine" parent="." instance=ExtResource( 2 )]
+anchor_top = 0.35
+anchor_bottom = 0.5
+selectionName = "Moteur"
+
+[node name="Tracks" parent="." instance=ExtResource( 2 )]
+anchor_top = 0.5
+anchor_bottom = 0.65
+selectionName = "Chenilles"
+
+[node name="Turret" parent="." instance=ExtResource( 2 )]
+anchor_top = 0.65
+anchor_bottom = 0.8
+selectionName = "Tourelle"
+
+[node name="ReadyBG" type="ColorRect" parent="."]
+anchor_left = 0.33
+anchor_top = 0.85
+anchor_right = 0.66
+anchor_bottom = 0.95
+
+[node name="ReadyLabel" type="Label" parent="ReadyBG"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Ready"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

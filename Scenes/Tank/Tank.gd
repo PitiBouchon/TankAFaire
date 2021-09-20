@@ -5,6 +5,7 @@ var _playerNumber : int
 var _speed : float
 var _target : Vector3
 
+
 func loadData(data : TankData, player : int) -> void:
 	_playerNumber = player
 	
@@ -42,18 +43,24 @@ func _process(delta):
 func processChassi(delta) -> void:
 	var direction : Vector3 = Vector3.ZERO
 	if _playerNumber == 1:
-		if Input.is_action_pressed("ui_right"):
+		if Input.is_action_pressed("player1_right"):
 			direction.x += 1
-		if Input.is_action_pressed("ui_left"):
+		if Input.is_action_pressed("player1_left"):
 			direction.x -= 1
-		if Input.is_action_pressed("ui_up"):
+		if Input.is_action_pressed("player1_up"):
 			direction.z -= 1
-		if Input.is_action_pressed("ui_down"):
+		if Input.is_action_pressed("player1_down"):
 			direction.z += 1
 	
 	if _playerNumber == 2:
-		#need different control
-		pass
+		if Input.is_action_pressed("player2_right"):
+			direction.x += 1
+		if Input.is_action_pressed("player2_left"):
+			direction.x -= 1
+		if Input.is_action_pressed("player2_up"):
+			direction.z -= 1
+		if Input.is_action_pressed("player2_down"):
+			direction.z += 1
 	
 	direction = direction.normalized()
 	translate(direction * _speed * delta)

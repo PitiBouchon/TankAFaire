@@ -1,24 +1,32 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Menus/TankSelection/TankSelection.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/TankElement/Engine/Engine1.res" type="Resource" id=2]
 [ext_resource path="res://Ressources/TankElement/Track/Track1.res" type="Resource" id=3]
 [ext_resource path="res://Ressources/TankElement/Chassi/Chassi1.res" type="Resource" id=4]
 [ext_resource path="res://Ressources/TankElement/Turret/Turret1.res" type="Resource" id=5]
+[ext_resource path="res://Ressources/TankElement/Chassi/Chassi2.tres" type="Resource" id=6]
+[ext_resource path="res://Scenes/Tank/DisplayTank.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Menus/UI/UITankSelection.tscn" type="PackedScene" id=8]
 
-[node name="TankSelection" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="TankSelection" type="Spatial"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-chassiList = [ ExtResource( 4 ) ]
+chassiList = [ ExtResource( 4 ), ExtResource( 6 ) ]
 engineList = [ ExtResource( 2 ) ]
 trackList = [ ExtResource( 3 ) ]
 turretList = [ ExtResource( 5 ) ]
 
-[node name="DevPlaceHolder" type="Button" parent="."]
+[node name="Camera" type="Camera" parent="."]
+
+[node name="Player1" parent="." instance=ExtResource( 7 )]
+
+[node name="Player2" parent="." instance=ExtResource( 7 )]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="DevPlaceHolder" type="Button" parent="UI"]
+anchor_left = 0.5
+anchor_right = 0.5
 margin_right = 100.0
 margin_bottom = 40.0
 text = "Next"
@@ -26,4 +34,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="DevPlaceHolder" to="." method="_on_DevPlaceHolder_pressed"]
+[node name="UIPlayer1" parent="UI" instance=ExtResource( 8 )]
+anchor_left = 0.01
+anchor_right = 0.15
+playerNumber = 1
+
+[node name="UIPlayer2" parent="UI" instance=ExtResource( 8 )]
+anchor_left = 0.85
+anchor_right = 0.99
+playerNumber = 2
+
+[connection signal="pressed" from="UI/DevPlaceHolder" to="." method="_on_DevPlaceHolder_pressed"]
+[connection signal="next_chassi" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_next_chassi"]
+[connection signal="next_engine" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_next_engine"]
+[connection signal="next_track" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_next_track"]
+[connection signal="next_turret" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_next_turret"]
+[connection signal="player_ready" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_player_ready"]
+[connection signal="previous_chassi" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_previous_chassi"]
+[connection signal="previous_engine" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_previous_engine"]
+[connection signal="previous_track" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_previous_track"]
+[connection signal="previous_turret" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_previous_turret"]
+[connection signal="next_chassi" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_next_chassi"]
+[connection signal="next_engine" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_next_engine"]
+[connection signal="next_track" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_next_track"]
+[connection signal="next_turret" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_next_turret"]
+[connection signal="player_ready" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_player_ready"]
+[connection signal="previous_chassi" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_previous_chassi"]
+[connection signal="previous_engine" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_previous_engine"]
+[connection signal="previous_track" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_previous_track"]
+[connection signal="previous_turret" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_previous_turret"]
