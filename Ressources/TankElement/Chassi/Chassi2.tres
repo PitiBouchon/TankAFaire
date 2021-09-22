@@ -25,4 +25,4 @@ armorType = 1
 healthPoints = 20.0
 chassiMesh = SubResource( 1 )
 chassiPos = Vector3( 0, 0, 0 )
-chassiScale = Vector3( 0, 0, 0 )
+chassiScale = Vector3( 2.408, 1.589, 3.909 )
