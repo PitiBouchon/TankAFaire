@@ -15,10 +15,17 @@ signal player_ready
 
 export (int) var playerNumber
 
+onready var statHP : Label = $Stats/HP
+onready var statWeight : Label = $Stats/Weight
+onready var statHorsePower : Label = $Stats/HorsePower
+onready var statArmorType : Label = $Stats/ArmorType
+onready var statMobility : Label = $Stats/Mobility
+
 onready var chassi : UIElementSelection = $Chassi
 onready var engine : UIElementSelection = $Engine
 onready var tracks : UIElementSelection = $Tracks
 onready var turret : UIElementSelection = $Turret
+
 onready var ready  : ColorRect = $ReadyBG
 
 var playerSelection : Vector2 = Vector2.ZERO
@@ -62,7 +69,12 @@ func _input(event):
 	return
 
 
-func updateStats() -> void:
+func updateStats(healthPoint : float, weight : float, horsePower : float, armorType : float, maniability : int) -> void:
+	statHP.text = "Points de vie : " + str(healthPoint)
+	statWeight.text = "Poids : " + str(weight)
+	statHorsePower.text = "Puissance : " + str(horsePower)
+	statArmorType.text = "Blindage : " + str(armorType)
+	statMobility.text = "Maniabilité : " + str(maniability) 
 	pass
 
 func updateDisplay() -> void:

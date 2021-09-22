@@ -50,7 +50,13 @@ func updatePlayer1() -> void:
 	tankOne.track = trackList[player1Indexes[2]]
 	tankOne.turret = turretList[player1Indexes[3]]
 	
-	uiPlayer1.updateStats()
+	var hp : float = tankOne.chassi.healthPoints + tankOne.turret.healthPoints
+	var weight : float = tankOne.chassi.weight + tankOne.engine.weight + tankOne.track.weight + tankOne.turret.weight
+	var power : float = tankOne.engine.horsePower
+	var armor : float = 0.5 * tankOne.chassi.armorType + 0.5 * tankOne.turret.armorType
+	var maniability : int = tankOne.track.maniabilityLevel
+	
+	uiPlayer1.updateStats(hp, weight, power, armor, maniability)
 	
 	tankPlayer1.updateDisplay(tankOne)
 	
@@ -61,31 +67,16 @@ func updatePlayer2() -> void:
 	tankTwo.track = trackList[player2Indexes[2]]
 	tankTwo.turret = turretList[player2Indexes[3]]
 	
-	uiPlayer2.updateStats()
+	var hp : float = tankTwo.chassi.healthPoints + tankTwo.turret.healthPoints
+	var weight : float = tankTwo.chassi.weight + tankTwo.engine.weight + tankTwo.track.weight + tankTwo.turret.weight
+	var power : float = tankTwo.engine.horsePower
+	var armor : float = 0.5 * tankTwo.chassi.armorType + 0.5 * tankTwo.turret.armorType
+	var maniability : int = tankTwo.track.maniabilityLevel
+	
+	uiPlayer2.updateStats(hp, weight, power, armor, maniability)
 	
 	tankPlayer2.updateDisplay(tankTwo)
 
-
-# place holders --------------------------
-
-func _on_DevPlaceHolder_pressed():
-	devDefaultFill()
-	emit_signal("tank_selected", tankOne, tankTwo)
-	pass # Replace with function body.
-
-
-func devDefaultFill():
-	tankOne.chassi = chassiList[0]
-	tankOne.engine = engineList[0]
-	tankOne.track = trackList[0]
-	tankOne.turret = turretList[0]
-	
-	tankTwo.chassi = chassiList[0]
-	tankTwo.engine = engineList[0]
-	tankTwo.track = trackList[0]
-	tankTwo.turret = turretList[0]
-	
-	pass
 
 # player 1 -------------------------------
 

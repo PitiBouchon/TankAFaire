@@ -20,9 +20,9 @@ surfaces/0 = {
 
 [resource]
 script = ExtResource( 1 )
-weight = 10.0
-armorType = 1
-healthPoints = 20.0
+weight = 100.0
+armorType = 2
+healthPoints = 40.0
 chassiMesh = SubResource( 1 )
 chassiPos = Vector3( 0, 0, 0 )
 chassiScale = Vector3( 2.408, 1.589, 3.909 )
