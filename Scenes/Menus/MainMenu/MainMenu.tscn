@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Menus/MainMenu/MainMenu.gd" type="Script" id=1]
+
+[sub_resource type="InputEventAction" id=1]
+action = "player1_select"
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -37,6 +43,10 @@ margin_left = -100.0
 margin_top = -20.0
 margin_right = 100.0
 margin_bottom = 20.0
+shortcut = SubResource( 2 )
 text = "New Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="NewGameButton" to="." method="on_new_game_pressed"]

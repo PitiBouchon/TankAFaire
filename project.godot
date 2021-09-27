@@ -49,7 +49,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Menus/TankSelection/TankSelection.gd"
 }, {
-"base": "Spatial",
+"base": "KinematicBody",
 "class": "Tank",
 "language": "GDScript",
 "path": "res://Scenes/Tank/Tank.gd"
@@ -101,6 +101,10 @@ _global_script_class_icons={
 config/name="TankAFaire"
 run/main_scene="res://Scenes/Manager/GameManager.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/dpi/allow_hidpi=true
 
 [gdnative]
 
@@ -158,6 +162,21 @@ player2_select={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"unicode":0,"echo":false,"script":null)
  ]
 }
+player1_shoot={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+player2_shoot={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+3d_physics/layer_1="player1"
+3d_physics/layer_2="player2"
 
 [rendering]
 

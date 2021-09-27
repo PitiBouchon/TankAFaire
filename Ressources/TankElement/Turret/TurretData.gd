@@ -12,5 +12,6 @@ export (Vector3) var turretScale
 export (Mesh) var canonMesh
 export (Vector3) var canonPos
 export (Vector3) var canonScale
+export (Vector3) var relativeMuzzlePosition
 
 export (PackedScene) var bulletScene
