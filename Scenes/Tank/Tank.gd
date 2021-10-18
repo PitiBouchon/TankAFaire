@@ -6,20 +6,20 @@ var _speed : float
 var _target : Vector3
 var _current_time : float 
 var _reload_time :float = 1 #A METTRE DANS DATA DU CANON
-var _health : int = 5#Je met à 5 pour le moment, à modif
+var _health : int = 5 #Je met à 5 pour le moment, à modif
 
-export (PackedScene) var Projectile
+var _muzzelOffset : Vector3
+var _projectile : PackedScene
 
 func loadData(data : TankData, player : int) -> void:
 	_playerNumber = player
-	_current_time=0
+	_current_time = 0
+	_muzzelOffset = data.turret.relativeMuzzlePosition
+	_projectile = data.turret.bulletScene
 	
 	#On donne au tank ses collisions :
 	self.set_collision_layer_bit(_playerNumber,true)
-	if _playerNumber==1:
-		self.set_collision_mask_bit(2,true)
-	else:
-		self.set_collision_mask_bit(1,true)
+	self.set_collision_mask_bit(_playerNumber, true)
 	
 	$Chassi.mesh = data.chassi.chassiMesh
 	$Chassi.translation = data.chassi.chassiPos
@@ -38,6 +38,7 @@ func loadData(data : TankData, player : int) -> void:
 	$Turret/Canon.scale = data.turret.canonScale
 	
 	_speed = computeSpeed(data)
+	
 	return
 
 func computeSpeed(data : TankData) -> float:
@@ -96,26 +97,24 @@ func processTurret(delta) -> void:
 		if Input.is_action_pressed("player1_shoot"):
 			if _current_time > _reload_time :
 				_current_time=0 #Permet de gérer le reload
-				shoot(2) #comme c'est le tank 1 qui tire, le bullet va être vis-à-vis du tank 2 en layer/mask
+				shoot() 
 	if _playerNumber == 2:
 		if Input.is_action_pressed("player2_shoot"):
 			if _current_time > _reload_time :
 				_current_time=0
-				shoot(1) #de même
+				shoot() 
 	return
 
 #This function handles the firing event
-func shoot(playerNumber):
-	var bullet : RigidBody = Projectile.instance()
-	bullet.set_translation($Turret/Canon.global_transform.origin)
+func shoot() -> void:
+	var bullet : Bullet = _projectile.instance()
+	bullet.initBullet($Turret/Canon.global_transform.origin + _muzzelOffset, 
+	$Turret/Canon.global_transform.basis.z, _playerNumber, 0)
 	get_tree().current_scene.add_child(bullet)
-	bullet.apply_impulse(Vector3.ZERO,$Turret/Canon.global_transform.basis.z)
-	bullet.set_collision_mask_bit(playerNumber,true)
-	bullet.set_collision_mask_bit(playerNumber,true)
 	pass
 
 #This function IS CALLED BY THE PROJECTILE THAT HIT THE TANK
-func damage(dmg):
+func damage(dmg) -> void:
 	_health = _health-1
 	if _health<0:
 		queue_free()
