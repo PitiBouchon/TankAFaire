@@ -3,7 +3,7 @@ class_name Bullet
 
 var _dir : Vector3
 
-func initBullet(pos : Vector3, dir : Vector3, playerNumber : int, parameter : float) -> void :
+func initBullet(pos : Vector3, dir : Vector3, playerNumber : int) -> void :
 	translation = pos
 	_dir = dir
 	if playerNumber==1:

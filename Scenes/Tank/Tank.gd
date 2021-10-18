@@ -108,8 +108,7 @@ func processTurret(delta) -> void:
 #This function handles the firing event
 func shoot() -> void:
 	var bullet : Bullet = _projectile.instance()
-	bullet.initBullet($Turret/Canon.global_transform.origin + _muzzelOffset, 
-	$Turret/Canon.global_transform.basis.z, _playerNumber, 0)
+	bullet.initBullet($Turret/Canon.global_transform.origin + _muzzelOffset, $Turret/Canon.global_transform.basis.z, _playerNumber)
 	get_tree().current_scene.add_child(bullet)
 	pass
 

@@ -4,8 +4,8 @@ export (float) var speed
 
 
 #override
-func initBullet(pos : Vector3, dir : Vector3, playerNumber : int, parameter : float) -> void :
-	.initBullet(pos, dir, playerNumber, parameter)
+func initBullet(pos : Vector3, dir : Vector3, playerNumber : int) -> void :
+	.initBullet(pos, dir, playerNumber)
 
 
 func _process(delta):
