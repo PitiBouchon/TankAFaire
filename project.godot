@@ -106,7 +106,7 @@ _global_script_class_icons={
 
 config/name="TankAFaire"
 run/main_scene="res://Scenes/Manager/GameManager.tscn"
-config/icon="res://icon.png"
+config/icon="res://logo CELL.png"
 
 [display]
 
