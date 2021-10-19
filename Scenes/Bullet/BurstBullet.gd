@@ -2,9 +2,9 @@ extends Bullet
 
 export(PackedScene) var BasicBullet
 
-export(float) var interBulletTime = 0.2
+export(float) var interBulletTime = 0.1
 
-export(int) var amount = 12
+export(int) var amount = 5
 
 
 func initBullet(pos : Vector3, dir : Vector3, playerNumber : int) -> void :
