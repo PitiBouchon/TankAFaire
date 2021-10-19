@@ -19,7 +19,7 @@ func inistanciateTank(tankOne : TankData, tankTwo : TankData) -> void:
 	return
 
 
-func getTankByID(id : int) -> Vector3:
+func getTankPositionByID(id : int) -> Vector3:
 	if id == 1:
 		return tank1.translation
 	return tank2.translation

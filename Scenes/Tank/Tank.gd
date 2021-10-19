@@ -50,7 +50,7 @@ func _process(delta):
 	processChassi(delta)
 	processTurret(delta)
 	_current_time += delta
-	_target = get_parent().getTankByID(3-_playerNumber)
+	_target = get_parent().getTankPositionByID(3-_playerNumber)
 	pass
 
 
