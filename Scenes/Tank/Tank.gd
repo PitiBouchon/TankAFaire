@@ -39,6 +39,7 @@ func loadData(data : TankData, player : int) -> void:
 	
 	_speed = computeSpeed(data)
 	
+	
 	return
 
 func computeSpeed(data : TankData) -> float:
@@ -49,6 +50,7 @@ func _process(delta):
 	processChassi(delta)
 	processTurret(delta)
 	_current_time += delta
+	_target = get_parent().getTankByID(3-_playerNumber)
 	pass
 
 

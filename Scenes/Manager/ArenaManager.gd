@@ -18,7 +18,8 @@ func inistanciateTank(tankOne : TankData, tankTwo : TankData) -> void:
 	tank2.translation = Vector3(-10, 0, 0)
 	return
 
-func _process(delta):
-	tank1.updateTarget(tank2.translation)
-	tank2.updateTarget(tank1.translation)
-	pass
+
+func getTankByID(id : int) -> Vector3:
+	if id == 1:
+		return tank1.translation
+	return tank2.translation
