@@ -2,7 +2,7 @@ extends Bullet
 
 export(PackedScene) var BasicBullet
 
-export(float) var interBulletTime = 0.1
+export(float) var interBulletTime = 0.2
 
 export(int) var amount = 5
 

@@ -1,9 +1,10 @@
 extends Area
 class_name Bullet
 
-#
+
 var _dir : Vector3
 var _playerNumber : int;
+
 
 func initBullet(pos : Vector3, dir : Vector3, playerNumber : int) -> void :
 	translation = pos
