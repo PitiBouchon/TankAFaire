@@ -9,7 +9,7 @@ export(float) var _distance
 #La durée en l'air de la balle
 export(float) var _duration
 
-#Le temps qui s'est écoulé jusqu'ici
+#Le temps qui s'est écoulé jusqu'ici (0 au départ, augment de delta à chaque appel de _process)
 var _elapsedTime : float
 
 #La distance actuelle de la balle au tank émetteur

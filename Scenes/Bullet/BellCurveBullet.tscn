@@ -11,7 +11,7 @@
 script = ExtResource( 2 )
 _height = 50.0
 _distance = 35.0
-_duration = 5.0
+_duration = 2.0
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )
