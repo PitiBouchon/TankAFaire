@@ -116,7 +116,7 @@ func shoot() -> void:
 
 #This function IS CALLED BY THE PROJECTILE THAT HIT THE TANK
 func damage(dmg) -> void:
-	_health = _health-1
+	_health = _health-dmg
 	if _health<0:
 		queue_free()
 		get_tree().reload_current_scene() #POUR LE MOMENT SI UN TANK MEURE LE JEU CRASH - DONC ON QUITTE
