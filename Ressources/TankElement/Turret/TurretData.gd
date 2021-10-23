@@ -13,5 +13,6 @@ export (Mesh) var canonMesh
 export (Vector3) var canonPos
 export (Vector3) var canonScale
 export (Vector3) var relativeMuzzlePosition
+export (float) var realoadTime
 
 export (PackedScene) var bulletScene
