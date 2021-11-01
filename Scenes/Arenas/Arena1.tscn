@@ -1,0 +1,156 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Arenas/AranaElements/DefaultWall.tscn" type="PackedScene" id=1]
+
+[node name="Arena1" type="Spatial"]
+
+[node name="Corners" type="Node" parent="."]
+
+[node name="UpperLeftCorner" parent="Corners" instance=ExtResource( 1 )]
+
+[node name="UpperRightCorner" parent="Corners" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 0 )
+
+[node name="LowerLeftBorder" parent="Corners" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18 )
+
+[node name="LowerRightBorder" parent="Corners" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 18 )
+
+[node name="UpperBorder" type="Node" parent="."]
+
+[node name="UpperBorder1" parent="UpperBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
+
+[node name="UpperBorder2" parent="UpperBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
+
+[node name="UpperBorder3" parent="UpperBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
+
+[node name="UpperBorder4" parent="UpperBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
+
+[node name="UpperBorder5" parent="UpperBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0 )
+
+[node name="UpperBorder6" parent="UpperBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
+
+[node name="UpperBorder7" parent="UpperBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0 )
+
+[node name="UpperBorder8" parent="UpperBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0 )
+
+[node name="UpperBorder9" parent="UpperBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0 )
+
+[node name="UpperBorder10" parent="UpperBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0 )
+
+[node name="UpperBorder11" parent="UpperBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 0 )
+
+[node name="UpperBorder12" parent="UpperBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0 )
+
+[node name="LowerBorder" type="Node" parent="."]
+
+[node name="LowerBorder1" parent="LowerBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 18 )
+
+[node name="LowerBorder2" parent="LowerBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 18 )
+
+[node name="LowerBorder3" parent="LowerBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 18 )
+
+[node name="LowerBorder4" parent="LowerBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 18 )
+
+[node name="LowerBorder5" parent="LowerBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 18 )
+
+[node name="LowerBorder6" parent="LowerBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 18 )
+
+[node name="LowerBorder7" parent="LowerBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 18 )
+
+[node name="LowerBorder8" parent="LowerBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 18 )
+
+[node name="LowerBorder9" parent="LowerBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 18 )
+
+[node name="LowerBorder10" parent="LowerBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 18 )
+
+[node name="LowerBorder11" parent="LowerBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 18 )
+
+[node name="LowerBorder12" parent="LowerBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 18 )
+
+[node name="LeftBorder" type="Node" parent="."]
+
+[node name="LeftBorder1" parent="LeftBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="LeftBorder2" parent="LeftBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="LeftBorder3" parent="LeftBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="LeftBorder4" parent="LeftBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="LeftBorder5" parent="LeftBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
+
+[node name="LeftBorder6" parent="LeftBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12 )
+
+[node name="LeftBorder7" parent="LeftBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14 )
+
+[node name="LeftBorder8" parent="LeftBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16 )
+
+[node name="RightBorder" type="Node" parent="."]
+
+[node name="RightBorder1" parent="RightBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 2 )
+
+[node name="RightBorder2" parent="RightBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 4 )
+
+[node name="RightBorder3" parent="RightBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 6 )
+
+[node name="RightBorder4" parent="RightBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 8 )
+
+[node name="RightBorder5" parent="RightBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 10 )
+
+[node name="RightBorder6" parent="RightBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 12 )
+
+[node name="RightBorder7" parent="RightBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 14 )
+
+[node name="RightBorder8" parent="RightBorder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 16 )
+
+[node name="Obstacle" type="Node" parent="."]
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="SpawnPoint1" type="Position3D" parent="SpawnPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 10 )
+
+[node name="SpawnPoint2" type="Position3D" parent="SpawnPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 10 )

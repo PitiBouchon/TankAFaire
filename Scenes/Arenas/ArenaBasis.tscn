@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Arenas/AranaElements/BorderWall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Arenas/AranaElements/BorderConnector.tscn" type="PackedScene" id=4]
+
+[node name="Arena2" type="Spatial"]
+
+[node name="RightWall" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 0, -37 )
+
+[node name="Wall" parent="RightWall" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.4247 )
+
+[node name="Wall4" parent="RightWall" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 56.2435 )
+
+[node name="Connector" parent="RightWall" instance=ExtResource( 4 )]
+
+[node name="Connector3" parent="RightWall" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 71.0915 )
+
+[node name="Connector2" parent="RightWall" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 37.5457 )
+
+[node name="LeftWall" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, -37 )
+
+[node name="Wall" parent="LeftWall" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.4247 )
+
+[node name="Wall4" parent="LeftWall" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 56.2435 )
+
+[node name="Connector" parent="LeftWall" instance=ExtResource( 4 )]
+
+[node name="Connector3" parent="LeftWall" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 71.0915 )
+
+[node name="Connector2" parent="LeftWall" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 37.5457 )
+
+[node name="UpperWall" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, -37 )
+
+[node name="Wall10" parent="UpperWall" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 44.7823, 0, 0 )
+
+[node name="Wall9" parent="UpperWall" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 76.6197, 0, 0 )
+
+[node name="Wall8" parent="UpperWall" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 102.099, 0, 0 )
+
+[node name="Wall5" parent="UpperWall" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.1698, 0, 0 )
+
+[node name="Connector" parent="UpperWall" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0 )
+
+[node name="UnderWall" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 33 )
+
+[node name="Wall10" parent="UnderWall" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 44.7823, 0, 0 )
+
+[node name="Wall9" parent="UnderWall" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 76.6197, 0, 0 )
+
+[node name="Wall8" parent="UnderWall" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 102.099, 0, 0 )
+
+[node name="Wall5" parent="UnderWall" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.1698, 0, 0 )
+
+[node name="Connector" parent="UnderWall" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0 )
+
+[node name="SpawnPoints" type="Spatial" parent="."]
+
+[node name="SpawnPoint1" type="Position3D" parent="SpawnPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0 )
+
+[node name="SpawnPoint2" type="Position3D" parent="SpawnPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0 )
+
+[node name="ArenaElements" type="Spatial" parent="."]
