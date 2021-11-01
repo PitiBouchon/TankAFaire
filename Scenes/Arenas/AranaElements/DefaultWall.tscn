@@ -5,10 +5,6 @@
 [sub_resource type="CubeMesh" id=2]
 
 [node name="DefaultWall" type="RigidBody"]
-collision_layer = 0
-collision_mask = 3
-mode = 1
-gravity_scale = 0.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
