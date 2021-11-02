@@ -22,8 +22,7 @@ func inistanciateTank(tankOne : TankData, tankTwo : TankData) -> void:
 	active_map=MAP.instance()
 	add_child(active_map)
 	
-	
-	
+	#We spawn the tanks at the appropriate place :
 	tank1.translation = active_map.get_node("SpawnPoints/SpawnPoint1").translation
 	tank2.translation = active_map.get_node("SpawnPoints/SpawnPoint2").translation
 	return

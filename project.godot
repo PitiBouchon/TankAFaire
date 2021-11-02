@@ -193,6 +193,7 @@ player2_dash={
 
 3d_physics/layer_1="player1"
 3d_physics/layer_2="player2"
+3d_physics/layer_3="world"
 
 [rendering]
 

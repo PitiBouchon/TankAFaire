@@ -12,6 +12,7 @@ func initBullet(pos : Vector3, dir : Vector3, playerNumber : int) -> void :
 	_playerNumber = playerNumber
 	self.set_collision_mask_bit(0,false)
 	self.set_collision_layer_bit(0,false)
+	self.set_collision_mask_bit(3,true)
 	if playerNumber==1:
 		self.set_collision_mask_bit(2,true)
 		self.set_collision_layer_bit(2,true)
