@@ -237,11 +237,11 @@ func mainShoot() -> void:
 		_turretFreezTimer = 0
 
 
-func secShoot() -> void:	
+func secShoot() -> void:
 	var bullet : Bullet = _secBulletData.bulletScene.instance()
 	if !_bulletData.relativeToGun:
 		get_tree().current_scene.add_child(bullet)
-		bullet.initBullet(secMuzzle.global_transform.origin, turret.global_transform.basis.z, _playerNumber, _bulletData)
+		bullet.initBullet(secMuzzle.global_transform.origin, turret.global_transform.basis.z, _playerNumber, _secBulletData)
 	else:
 		gun.add_child(bullet)
 		bullet.initBullet(secMuzzle.translation, Vector3.BACK, _playerNumber, _bulletData)

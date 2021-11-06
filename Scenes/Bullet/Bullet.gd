@@ -9,7 +9,6 @@ var _damage : float
 
 
 func initBullet(pos : Vector3, dir : Vector3, playerNumber : int, data : BulletData) -> void :
-	print("init bullet")
 	translation = pos
 	_dir = dir
 	_playerNumber = playerNumber
