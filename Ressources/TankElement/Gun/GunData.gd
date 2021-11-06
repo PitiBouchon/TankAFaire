@@ -8,4 +8,4 @@ export (Mesh) var gunMesh
 export (Vector3) var gunScale
 
 export (Vector3) var relativeMuzzlePosition
-export (float) var realoadTime
+export (float) var reloadTime

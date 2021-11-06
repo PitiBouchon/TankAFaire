@@ -16,14 +16,23 @@ var _target : Vector3
 
 #chassi
 var _chassiDirection : Vector3
+var _chassiFreezDuration : float
+var _chassiFreezTimer : float
 
 #turret
 var _baseTurretOffset : Vector3
+var _turretFreezDuration : float
+var _turretFreezTimer : float
 
 # Main gun
 var _bulletData : BulletData
 var _mainReloadTimer : float 
-var _mainRealoadCooldown:float
+var _mainReloadCooldown:float
+
+# Secondary gun
+var _secBulletData : BulletData
+var _secReloadTimer : float
+var _secReloadCooldown : float 
 
 #bullet
 var _projectile : PackedScene
@@ -44,11 +53,15 @@ func loadData(data : TankData, player : int) -> void:
 	_health = computeHealth(data)
 	
 	_chassiDirection = Vector3.ZERO
+	_chassiFreezDuration = data.gun.bulletData.chassiFreezTime
+	_chassiFreezTimer = _chassiFreezDuration
 	
 	_baseTurretOffset = data.chassi.turretPos
+	_turretFreezDuration = data.gun.bulletData.turretFreezTime
+	_turretFreezTimer = _turretFreezDuration
 	
 	_mainReloadTimer = 0
-	_mainRealoadCooldown= data.gun.realoadTime
+	_mainReloadCooldown= data.gun.reloadTime
 	
 	muzzle.translation = data.gun.relativeMuzzlePosition
 	_bulletData = data.gun.bulletData 
@@ -100,6 +113,8 @@ func _process(delta):
 	processTurret(delta)
 	_mainReloadTimer += delta
 	_dashTimer += delta
+	_chassiFreezTimer += delta
+	_turretFreezTimer += delta
 	_target = get_parent().getTankPositionByID(3-_playerNumber)
 	pass
 
@@ -150,15 +165,16 @@ func processChassi(delta) -> void:
 			_dashTimer = 0
 			_dashDirection = _chassiDirection
 	
-	if _isDashing :
-		processDash()
-	elif inputPressed :
-		move_and_slide(_chassiDirection * _speed)
-	
-	chassi.rotation.y = acos(_chassiDirection.z)
-	if _chassiDirection.x != 0 :
-		chassi.rotation *= sign(_chassiDirection.x)
-	return
+	if _chassiFreezTimer > _chassiFreezDuration :
+		if _isDashing :
+			processDash()
+		elif inputPressed :
+			move_and_slide(_chassiDirection * _speed)
+		
+		chassi.rotation.y = acos(_chassiDirection.z)
+		if _chassiDirection.x != 0 :
+			chassi.rotation *= sign(_chassiDirection.x)
+
 
 func processDash() -> void:
 	if _dashTimer > _dashDuration :
@@ -170,23 +186,24 @@ func processDash() -> void:
 func processTurret(delta) -> void:
 	var positionOffset : Vector3 = _baseTurretOffset.rotated(Vector3.UP, chassi.rotation.y)
 	turret.translation = positionOffset
-	var direction : Vector3 = _target - translation
-	direction = direction.normalized()
-	turret.rotation.y = acos(direction.z)
-	if direction.x != 0 :
-		turret.rotation *= sign(direction.x)
-	#On gère le tir des tanks :
-	if _playerNumber == 1:
-		if Input.is_action_pressed("player1_shoot"):
-			if _mainReloadTimer > _mainRealoadCooldown:
-				_mainReloadTimer=0 #Permet de gérer le reload
-				shoot() 
-	if _playerNumber == 2:
-		if Input.is_action_pressed("player2_shoot"):
-			if _mainReloadTimer > _mainRealoadCooldown:
-				_mainReloadTimer=0
-				shoot() 
-	return
+	
+	if _turretFreezTimer > _turretFreezDuration :
+		var direction : Vector3 = _target - translation
+		direction = direction.normalized()
+		turret.rotation.y = acos(direction.z)
+		if direction.x != 0 :
+			turret.rotation *= sign(direction.x)
+		#On gère le tir des tanks :
+		if _playerNumber == 1:
+			if Input.is_action_pressed("player1_shoot"):
+				if _mainReloadTimer > _mainReloadCooldown:
+					_mainReloadTimer=0 #Permet de gérer le reload
+					shoot() 
+		if _playerNumber == 2:
+			if Input.is_action_pressed("player2_shoot"):
+				if _mainReloadTimer > _mainReloadCooldown:
+					_mainReloadTimer=0
+					shoot() 
 
 #This function handles the firing event
 func shoot() -> void:
@@ -200,6 +217,12 @@ func shoot() -> void:
 		bullet.scale.x *= (1 / turret.scale.x) * (1 / gun.scale.x)
 		bullet.scale.y *= (1 / turret.scale.y) * (1 / gun.scale.y)
 		bullet.scale.z *= (1 / turret.scale.z) * (1 / gun.scale.z)
+	
+	if _bulletData.stopChassiMovement :
+		_chassiFreezTimer = 0
+	
+	if _bulletData.stopTurretRotation :
+		_turretFreezTimer = 0
 
 
 #This function IS CALLED BY THE PROJECTILE THAT HIT THE TANK

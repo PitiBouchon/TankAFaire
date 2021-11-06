@@ -11,4 +11,4 @@ bulletData = ExtResource( 2 )
 gunMesh = ExtResource( 3 )
 gunScale = Vector3( 0.25, 0.25, 3 )
 relativeMuzzlePosition = Vector3( 0, 0, 1.5 )
-realoadTime = 1.0
+reloadTime = 1.0
