@@ -1,6 +1,9 @@
 extends KinematicBody
 class_name Tank
 
+
+const _angleAdjustSpeed = 30
+
 onready var chassi = $Chassi
 onready var track = $Chassi/Track
 onready var turret = $Turret
@@ -24,6 +27,8 @@ var _chassiFreezTimer : float
 var _baseTurretOffset : Vector3
 var _turretFreezDuration : float
 var _turretFreezTimer : float
+var _angleAdjust : float
+
 
 # Main gun
 var _bulletData : BulletData
@@ -57,6 +62,7 @@ func loadData(data : TankData, player : int) -> void:
 	_baseTurretOffset = data.chassi.turretPos
 	_turretFreezDuration = data.gun.bulletData.turretFreezTime
 	_turretFreezTimer = _turretFreezDuration
+	_angleAdjust = 0
 	
 	mainMuzzle.translation = data.gun.relativeMuzzlePosition
 	_bulletData = data.gun.bulletData 
@@ -178,13 +184,13 @@ func processChassi(delta) -> void:
 		if _chassiDirection.x != 0 :
 			chassi.rotation *= sign(_chassiDirection.x)
 
-
 func processDash() -> void:
 	if _dashTimer > _dashDuration :
 		_isDashing = false
 		return
 	move_and_slide(_dashDirection * _dashSpeed )
 	pass
+
 
 func processTurret(delta) -> void:
 	var positionOffset : Vector3 = _baseTurretOffset.rotated(Vector3.UP, chassi.rotation.y)
@@ -193,9 +199,28 @@ func processTurret(delta) -> void:
 	if _turretFreezTimer > _turretFreezDuration :
 		var direction : Vector3 = _target - translation
 		direction = direction.normalized()
-		turret.rotation.y = acos(direction.z)
+		
+		if _playerNumber == 1:
+			if Input.is_action_pressed("player1_rotLeft"):
+				_angleAdjust += _angleAdjustSpeed * delta
+			elif Input.is_action_pressed("player1_rotRight") : 
+				_angleAdjust -= _angleAdjustSpeed * delta
+			else:
+				_angleAdjust = 0
+		
+		if _playerNumber == 2:
+			if Input.is_action_pressed("player2_rotLeft"):
+				_angleAdjust += _angleAdjustSpeed * delta
+			elif Input.is_action_pressed("player2_rotRight") : 
+				_angleAdjust -= _angleAdjustSpeed * delta
+			else:
+				_angleAdjust = 0
+		
+		turret.rotation.y = acos(direction.z) 
 		if direction.x != 0 :
 			turret.rotation *= sign(direction.x)
+		turret.rotation.y += deg2rad(_angleAdjust)
+		
 		#On gère le tir des tanks :
 		if _playerNumber == 1:
 			if Input.is_action_pressed("player1_shoot"):
