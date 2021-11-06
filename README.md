@@ -5,10 +5,18 @@ Jeux soirée mintech
 ###-------------------------------------------------------------------------###
 
 # Touches sur PC :
-Mouvement joueur 1 : ZQSD
-Tir joueur 1 : ESPACE
-Dash joueur 1 : E
+Joueur 1 :
+Mouvement : ZQSD
+Validation/sélection : A
+Tir Principal: R
+Tir Secondaire : F
+Rotation tourelle : AE
+Dash : E
 
-Mouvement joueur 2 : Touches directionnelles
-Tir joueur 2 : ENTREE
-Dash joueur 2 : CTRL
+Joueur 2 :
+Mouvement : UHJK
+Validation/sélection : Y
+Tir Principal: O
+Tir Secondaire : L
+Rotation tourelle : YI
+Dash : P
