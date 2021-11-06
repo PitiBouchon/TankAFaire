@@ -5,7 +5,8 @@ onready var chassi = $Chassi
 onready var track = $Chassi/Track
 onready var turret = $Turret
 onready var gun = $Turret/Canon
-onready var muzzle = $Turret/Canon/muzzle
+onready var mainMuzzle = $Turret/Canon/mainMuzzle
+onready var secMuzzle = $Turret/secMuzzle
 
 
 var _playerNumber : int
@@ -34,9 +35,6 @@ var _secBulletData : BulletData
 var _secReloadTimer : float
 var _secReloadCooldown : float 
 
-#bullet
-var _projectile : PackedScene
-
 #dash
 var _isDashing : bool
 var _dashSpeed : float
@@ -60,12 +58,16 @@ func loadData(data : TankData, player : int) -> void:
 	_turretFreezDuration = data.gun.bulletData.turretFreezTime
 	_turretFreezTimer = _turretFreezDuration
 	
+	mainMuzzle.translation = data.gun.relativeMuzzlePosition
+	_bulletData = data.gun.bulletData 
 	_mainReloadTimer = 0
 	_mainReloadCooldown= data.gun.reloadTime
 	
-	muzzle.translation = data.gun.relativeMuzzlePosition
-	_bulletData = data.gun.bulletData 
-	_projectile = _bulletData.bulletScene
+	secMuzzle.translation = data.turret.secGunPos
+	_secBulletData = data.turret.secBulletData
+	_secReloadTimer = 0
+	_secReloadCooldown = data.turret.secCooldown
+	
 	
 	_isDashing = false
 	_dashSpeed = data.engine.dashSpeed
@@ -112,6 +114,7 @@ func _process(delta):
 	processChassi(delta)
 	processTurret(delta)
 	_mainReloadTimer += delta
+	_secReloadTimer
 	_dashTimer += delta
 	_chassiFreezTimer += delta
 	_turretFreezTimer += delta
@@ -198,22 +201,24 @@ func processTurret(delta) -> void:
 			if Input.is_action_pressed("player1_shoot"):
 				if _mainReloadTimer > _mainReloadCooldown:
 					_mainReloadTimer=0 #Permet de gérer le reload
-					shoot() 
+					mainShoot() 
 		if _playerNumber == 2:
 			if Input.is_action_pressed("player2_shoot"):
 				if _mainReloadTimer > _mainReloadCooldown:
 					_mainReloadTimer=0
-					shoot() 
+					mainShoot() 
+		
+		
 
 #This function handles the firing event
-func shoot() -> void:
-	var bullet : Bullet = _projectile.instance()
+func mainShoot() -> void:
+	var bullet : Bullet = _bulletData.bulletScene.instance()
 	if !_bulletData.relativeToGun:
 		get_tree().current_scene.add_child(bullet)
-		bullet.initBullet(muzzle.global_transform.origin, gun.global_transform.basis.z, _playerNumber, _bulletData)
+		bullet.initBullet(mainMuzzle.global_transform.origin, gun.global_transform.basis.z, _playerNumber, _bulletData)
 	else:
 		gun.add_child(bullet)
-		bullet.initBullet(muzzle.translation, Vector3.BACK, _playerNumber, _bulletData)
+		bullet.initBullet(mainMuzzle.translation, Vector3.BACK, _playerNumber, _bulletData)
 		bullet.scale.x *= (1 / turret.scale.x) * (1 / gun.scale.x)
 		bullet.scale.y *= (1 / turret.scale.y) * (1 / gun.scale.y)
 		bullet.scale.z *= (1 / turret.scale.z) * (1 / gun.scale.z)
@@ -222,6 +227,25 @@ func shoot() -> void:
 		_chassiFreezTimer = 0
 	
 	if _bulletData.stopTurretRotation :
+		_turretFreezTimer = 0
+
+
+func secShoot() -> void:
+	var bullet : Bullet = _secBulletData.bulletScene.instance()
+	if !_bulletData.relativeToGun:
+		get_tree().current_scene.add_child(bullet)
+		bullet.initBullet(secMuzzle.global_transform.origin, turret.global_transform.basis.z, _playerNumber, _bulletData)
+	else:
+		gun.add_child(bullet)
+		bullet.initBullet(secMuzzle.translation, Vector3.BACK, _playerNumber, _bulletData)
+		bullet.scale.x *= (1 / turret.scale.x) * (1 / gun.scale.x)
+		bullet.scale.y *= (1 / turret.scale.y) * (1 / gun.scale.y)
+		bullet.scale.z *= (1 / turret.scale.z) * (1 / gun.scale.z)
+	
+	if _secBulletData.stopChassiMovement :
+		_chassiFreezTimer = 0
+	
+	if _secBulletData.stopTurretRotation :
 		_turretFreezTimer = 0
 
 

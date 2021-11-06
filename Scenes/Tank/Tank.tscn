@@ -18,9 +18,11 @@ script = ExtResource( 1 )
 
 [node name="Turret" type="MeshInstance" parent="."]
 
+[node name="secMuzzle" type="Position3D" parent="Turret"]
+
 [node name="Canon" type="MeshInstance" parent="Turret"]
 
-[node name="muzzle" type="Position3D" parent="Turret/Canon"]
+[node name="mainMuzzle" type="Position3D" parent="Turret/Canon"]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
