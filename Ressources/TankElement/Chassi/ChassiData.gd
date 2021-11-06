@@ -8,3 +8,6 @@ export (float) var healthPoints
 export (Mesh) var chassiMesh
 export (Vector3) var chassiPos
 export (Vector3) var chassiScale
+
+export (Vector3) var turretPos
+

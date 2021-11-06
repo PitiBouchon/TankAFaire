@@ -20,6 +20,11 @@ _global_script_classes=[ {
 "path": "res://Scenes/Bullet/Bullet.gd"
 }, {
 "base": "Resource",
+"class": "BulletData",
+"language": "GDScript",
+"path": "res://Ressources/BulletData/BulletData.gd"
+}, {
+"base": "Resource",
 "class": "ChassiData",
 "language": "GDScript",
 "path": "res://Ressources/TankElement/Chassi/ChassiData.gd"
@@ -43,6 +48,11 @@ _global_script_classes=[ {
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://git_api.gdns"
+}, {
+"base": "Resource",
+"class": "GunData",
+"language": "GDScript",
+"path": "res://Ressources/TankElement/Gun/GunData.gd"
 }, {
 "base": "Control",
 "class": "MainMenu",
@@ -87,11 +97,13 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "ArenaManager": "",
 "Bullet": "",
+"BulletData": "",
 "ChassiData": "",
 "DisplayTank": "",
 "EngineData": "",
 "GameManager": "",
 "GitAPI": "",
+"GunData": "",
 "MainMenu": "",
 "TanckSelection": "",
 "Tank": "",

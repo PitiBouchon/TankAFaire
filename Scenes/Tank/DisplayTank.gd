@@ -13,11 +13,11 @@ func updateDisplay(data : TankData) -> void:
 	$Chassi/Track.scale = data.track.trackScale
 	
 	$Turret.mesh = data.turret.turretMesh
-	$Turret.translation = data.turret.turretPos
+	$Turret.translation = data.chassi.turretPos
 	$Turret.scale = data.turret.turretScale
 	
-	$Turret/Canon.mesh = data.turret.canonMesh
-	$Turret/Canon.translation = data.turret.canonPos
-	$Turret/Canon.scale = data.turret.canonScale
+	$Turret/Canon.mesh = data.gun.gunMesh
+	$Turret/Canon.translation = data.turret.gunPos
+	$Turret/Canon.scale = data.gun.gunScale
 	
 	return

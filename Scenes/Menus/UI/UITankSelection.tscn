@@ -78,23 +78,28 @@ __meta__ = {
 
 [node name="Chassi" parent="." instance=ExtResource( 2 )]
 anchor_top = 0.2
-anchor_bottom = 0.35
+anchor_bottom = 0.32
 selectionName = "Chassis"
 
 [node name="Engine" parent="." instance=ExtResource( 2 )]
-anchor_top = 0.35
-anchor_bottom = 0.5
+anchor_top = 0.32
+anchor_bottom = 0.44
 selectionName = "Moteur"
 
 [node name="Tracks" parent="." instance=ExtResource( 2 )]
-anchor_top = 0.5
-anchor_bottom = 0.65
+anchor_top = 0.44
+anchor_bottom = 0.56
 selectionName = "Chenilles"
 
 [node name="Turret" parent="." instance=ExtResource( 2 )]
-anchor_top = 0.65
-anchor_bottom = 0.8
+anchor_top = 0.56
+anchor_bottom = 0.68
 selectionName = "Tourelle"
+
+[node name="Gun" parent="." instance=ExtResource( 2 )]
+anchor_top = 0.68
+anchor_bottom = 0.8
+selectionName = "Gun"
 
 [node name="ReadyBG" type="ColorRect" parent="."]
 anchor_left = 0.33

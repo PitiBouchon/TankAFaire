@@ -6,10 +6,12 @@ signal next_chassi
 signal next_engine
 signal next_track
 signal next_turret
+signal next_gun
 signal previous_chassi
 signal previous_engine
 signal previous_track
 signal previous_turret
+signal previous_gun
 
 signal player_ready
 
@@ -25,11 +27,12 @@ onready var chassi : UIElementSelection = $Chassi
 onready var engine : UIElementSelection = $Engine
 onready var tracks : UIElementSelection = $Tracks
 onready var turret : UIElementSelection = $Turret
+onready var gun : UIElementSelection = $Gun
 
 onready var ready  : ColorRect = $ReadyBG
 
 var playerSelection : Vector2 = Vector2.ZERO
-var selectionLimit : Vector2 = Vector2(5,2)
+var selectionLimit : Vector2 = Vector2(6,2)
 var playerReady : bool = false
 
 func _ready():
@@ -87,6 +90,7 @@ func updateDisplay() -> void:
 			engine.selectNone()
 			tracks.selectNone()
 			turret.selectNone()
+			gun.selectNone()
 			readyUnselect()
 			
 		1.0:
@@ -97,6 +101,7 @@ func updateDisplay() -> void:
 				engine.selectNext()
 			tracks.selectNone()
 			turret.selectNone()
+			gun.selectNone()
 			readyUnselect()
 			
 		2.0:
@@ -107,6 +112,7 @@ func updateDisplay() -> void:
 			else:
 				tracks.selectNext()
 			turret.selectNone()
+			gun.selectNone()
 			readyUnselect()
 			
 		3.0:
@@ -117,6 +123,7 @@ func updateDisplay() -> void:
 				turret.selectPrevious()
 			else:
 				turret.selectNext()
+			gun.selectNone()
 			readyUnselect()
 			
 		4.0:
@@ -124,6 +131,18 @@ func updateDisplay() -> void:
 			engine.selectNone()
 			tracks.selectNone()
 			turret.selectNone()
+			if playerSelection.y == 0:
+				gun.selectPrevious()
+			else:
+				gun.selectNext()
+			readyUnselect()
+			
+		5.0:
+			chassi.selectNone()
+			engine.selectNone()
+			tracks.selectNone()
+			turret.selectNone()
+			gun.selectNone()
 			readySelect()
 	
 	if playerReady:
@@ -166,6 +185,12 @@ func signalEmiter() -> void:
 				emit_signal("next_turret")
 			
 		4.0:
+			if playerSelection.y == 0:
+				emit_signal("previous_gun")
+			else:
+				emit_signal("next_gun")
+			
+		5.0:
 			playerReady = true
 			emit_signal("player_ready")
 	pass

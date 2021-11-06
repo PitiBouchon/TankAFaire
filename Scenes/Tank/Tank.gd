@@ -1,15 +1,32 @@
 extends KinematicBody
 class_name Tank
 
+onready var chassi = $Chassi
+onready var track = $Chassi/Track
+onready var turret = $Turret
+onready var gun = $Turret/Canon
+onready var muzzle = $Turret/Canon/muzzle
+
+
 var _playerNumber : int
 
 var _speed : float
 var _health : int
 var _target : Vector3
 
-# reaload
-var _reloadTimer : float 
-var _realoadCooldown:float
+#chassi
+var _chassiDirection : Vector3
+
+#turret
+var _baseTurretOffset : Vector3
+
+# Main gun
+var _bulletData : BulletData
+var _mainReloadTimer : float 
+var _mainRealoadCooldown:float
+
+#bullet
+var _projectile : PackedScene
 
 #dash
 var _isDashing : bool
@@ -19,9 +36,6 @@ var _dashTimer : float
 var _dashCooldown : float
 var _dashDirection : Vector3
 
-#bullet
-var _muzzelOffset : Vector3
-var _projectile : PackedScene
 
 func loadData(data : TankData, player : int) -> void:
 	_playerNumber = player
@@ -29,18 +43,23 @@ func loadData(data : TankData, player : int) -> void:
 	_speed = computeSpeed(data)
 	_health = computeHealth(data)
 	
-	_reloadTimer = 0
-	_realoadCooldown= data.turret.realoadTime
+	_chassiDirection = Vector3.ZERO
+	
+	_baseTurretOffset = data.chassi.turretPos
+	
+	_mainReloadTimer = 0
+	_mainRealoadCooldown= data.gun.realoadTime
+	
+	muzzle.translation = data.gun.relativeMuzzlePosition
+	_bulletData = data.gun.bulletData 
+	_projectile = _bulletData.bulletScene
 	
 	_isDashing = false
 	_dashSpeed = data.engine.dashSpeed
 	_dashDuration = data.engine.dashDistance / _dashSpeed
 	_dashTimer = 0
 	_dashCooldown = data.engine.dashCooldown
-	
-	_muzzelOffset = data.turret.relativeMuzzlePosition
-	_projectile = data.turret.bulletScene
-	
+
 	#On donne au tank ses collisions :
 	self.set_collision_layer_bit(_playerNumber,true)
 	self.set_collision_mask_bit(_playerNumber, true)
@@ -49,21 +68,21 @@ func loadData(data : TankData, player : int) -> void:
 	self.set_collision_mask_bit(0, true)
 	
 	#meshes
-	$Chassi.mesh = data.chassi.chassiMesh
-	$Chassi.translation = data.chassi.chassiPos
-	$Chassi.scale = data.chassi.chassiScale
+	chassi.mesh = data.chassi.chassiMesh
+	chassi.translation = data.chassi.chassiPos
+	chassi.scale = data.chassi.chassiScale
 	
-	$Chassi/Track.mesh = data.track.trackMesh
-	$Chassi/Track.translation = data.track.trackPos
-	$Chassi/Track.scale = data.track.trackScale
+	track.mesh = data.track.trackMesh
+	track.translation = data.track.trackPos
+	track.scale = data.track.trackScale
 	
-	$Turret.mesh = data.turret.turretMesh
-	$Turret.translation = data.turret.turretPos
-	$Turret.scale = data.turret.turretScale
+	turret.mesh = data.turret.turretMesh
+	turret.translation = data.chassi.turretPos
+	turret.scale = data.turret.turretScale
 	
-	$Turret/Canon.mesh = data.turret.canonMesh
-	$Turret/Canon.translation = data.turret.canonPos
-	$Turret/Canon.scale = data.turret.canonScale
+	gun.mesh = data.gun.gunMesh
+	gun.translation = data.turret.gunPos
+	gun.scale = data.gun.gunScale
 	
 	return
 
@@ -79,56 +98,66 @@ func computeHealth(data : TankData) -> float:
 func _process(delta):
 	processChassi(delta)
 	processTurret(delta)
-	_reloadTimer += delta
+	_mainReloadTimer += delta
 	_dashTimer += delta
 	_target = get_parent().getTankPositionByID(3-_playerNumber)
 	pass
 
 
 func processChassi(delta) -> void:
-	var direction : Vector3 = Vector3.ZERO
+	
+	var inputPressed : bool = false
+	
 	if _playerNumber == 1:
 		if Input.is_action_pressed("player1_right"):
-			direction.x += 1
+			_chassiDirection.x = 1
+			inputPressed = true
 		if Input.is_action_pressed("player1_left"):
-			direction.x -= 1
+			_chassiDirection.x = -1
+			inputPressed = true
 		if Input.is_action_pressed("player1_up"):
-			direction.z -= 1
+			_chassiDirection.z = -1
+			inputPressed = true
 		if Input.is_action_pressed("player1_down"):
-			direction.z += 1
+			_chassiDirection.z = 1
+			inputPressed = true
 	
 	if _playerNumber == 2:
 		if Input.is_action_pressed("player2_right"):
-			direction.x += 1
+			_chassiDirection.x = 1
+			inputPressed = true
 		if Input.is_action_pressed("player2_left"):
-			direction.x -= 1
+			_chassiDirection.x = -1
+			inputPressed = true
 		if Input.is_action_pressed("player2_up"):
-			direction.z -= 1
+			_chassiDirection.z = -1
+			inputPressed = true
 		if Input.is_action_pressed("player2_down"):
-			direction.z += 1
+			_chassiDirection.z = 1
+			inputPressed = true
 	
-	direction = direction.normalized()
+	_chassiDirection = _chassiDirection.normalized()
 	
 	if _playerNumber == 1 :
 		if Input.is_action_just_pressed("player1_dash") && !_isDashing && _dashTimer > _dashCooldown:
 			_isDashing = true
 			_dashTimer = 0
-			_dashDirection = direction
+			_dashDirection = _chassiDirection
 	
 	if _playerNumber == 2 :
 		if Input.is_action_just_pressed("player2_dash") && !_isDashing && _dashTimer > _dashCooldown:
 			_isDashing = true
 			_dashTimer = 0
-			_dashDirection = direction
+			_dashDirection = _chassiDirection
 	
 	if _isDashing :
 		processDash()
-	else:
-		move_and_slide(direction * _speed)
+	elif inputPressed :
+		move_and_slide(_chassiDirection * _speed)
 	
-	$Chassi.rotation.y = acos(direction.z)
-	if direction.x != 0 :
-		$Chassi.rotation *= sign(direction.x)
+	chassi.rotation.y = acos(_chassiDirection.z)
+	if _chassiDirection.x != 0 :
+		chassi.rotation *= sign(_chassiDirection.x)
 	return
 
 func processDash() -> void:
@@ -139,29 +168,31 @@ func processDash() -> void:
 	pass
 
 func processTurret(delta) -> void:
+	var positionOffset : Vector3 = _baseTurretOffset.rotated(Vector3.UP, chassi.rotation.y)
+	turret.translation = positionOffset
 	var direction : Vector3 = _target - translation
 	direction = direction.normalized()
-	$Turret.rotation.y = acos(direction.z)
+	turret.rotation.y = acos(direction.z)
 	if direction.x != 0 :
-		$Turret.rotation *= sign(direction.x)
+		turret.rotation *= sign(direction.x)
 	#On gère le tir des tanks :
 	if _playerNumber == 1:
 		if Input.is_action_pressed("player1_shoot"):
-			if _reloadTimer > _realoadCooldown:
-				_reloadTimer=0 #Permet de gérer le reload
+			if _mainReloadTimer > _mainRealoadCooldown:
+				_mainReloadTimer=0 #Permet de gérer le reload
 				shoot() 
 	if _playerNumber == 2:
 		if Input.is_action_pressed("player2_shoot"):
-			if _reloadTimer > _realoadCooldown:
-				_reloadTimer=0
+			if _mainReloadTimer > _mainRealoadCooldown:
+				_mainReloadTimer=0
 				shoot() 
 	return
 
-#This function handles the firing event
+#This function handles the firing event -> need transfer to gun
 func shoot() -> void:
 	var bullet : Bullet = _projectile.instance()
 	get_tree().current_scene.add_child(bullet)
-	bullet.initBullet($Turret/Canon.global_transform.origin + _muzzelOffset, $Turret/Canon.global_transform.basis.z, _playerNumber)
+	bullet.initBullet(muzzle.global_transform.origin, gun.global_transform.basis.z, _playerNumber)
 	pass
 
 #This function IS CALLED BY THE PROJECTILE THAT HIT THE TANK

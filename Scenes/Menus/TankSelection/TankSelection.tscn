@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Menus/TankSelection/TankSelection.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/TankElement/Engine/Engine1.res" type="Resource" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Ressources/TankElement/Chassi/Chassi2.tres" type="Resource" id=6]
 [ext_resource path="res://Scenes/Tank/DisplayTank.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Menus/UI/UITankSelection.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Ressources/TankElement/Gun/Gun1.tres" type="Resource" id=9]
 
 [node name="TankSelection" type="Spatial"]
 script = ExtResource( 1 )
@@ -15,6 +16,7 @@ chassiList = [ ExtResource( 4 ), ExtResource( 6 ) ]
 engineList = [ ExtResource( 2 ) ]
 trackList = [ ExtResource( 3 ) ]
 turretList = [ ExtResource( 5 ) ]
+gunList = [ ExtResource( 9 ) ]
 
 [node name="Camera" type="Camera" parent="."]
 
@@ -38,19 +40,23 @@ playerNumber = 2
 
 [connection signal="next_chassi" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_next_chassi"]
 [connection signal="next_engine" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_next_engine"]
+[connection signal="next_gun" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_next_gun"]
 [connection signal="next_track" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_next_track"]
 [connection signal="next_turret" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_next_turret"]
 [connection signal="player_ready" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_player_ready"]
 [connection signal="previous_chassi" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_previous_chassi"]
 [connection signal="previous_engine" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_previous_engine"]
+[connection signal="previous_gun" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_previous_gun"]
 [connection signal="previous_track" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_previous_track"]
 [connection signal="previous_turret" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_previous_turret"]
 [connection signal="next_chassi" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_next_chassi"]
 [connection signal="next_engine" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_next_engine"]
+[connection signal="next_gun" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_next_gun"]
 [connection signal="next_track" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_next_track"]
 [connection signal="next_turret" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_next_turret"]
 [connection signal="player_ready" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_player_ready"]
 [connection signal="previous_chassi" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_previous_chassi"]
 [connection signal="previous_engine" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_previous_engine"]
+[connection signal="previous_gun" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_previous_gun"]
 [connection signal="previous_track" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_previous_track"]
 [connection signal="previous_turret" from="UI/UIPlayer2" to="." method="_on_UIPlayer2_previous_turret"]
