@@ -3,8 +3,6 @@ class_name Landmine
 
 var _detectionRad : float
 
-var _damage : float
-
 var _countdown : float
 
 var _delay : float
@@ -21,7 +19,6 @@ func initBullet(pos : Vector3, dir : Vector3, playerNumber : int, data : BulletD
 		queue_free()
 	else:
 		_detectionRad = bulletData.detectionRad
-		_damage = bulletData.damage
 		_countdown = bulletData.countdown
 		_delay = bulletData.delay
 		

@@ -18,8 +18,8 @@ func initBullet(pos : Vector3, dir : Vector3, playerNumber : int, data : BulletD
 	
 		var currentDir : Vector3 = dir
 		currentDir = currentDir.rotated(Vector3.UP, -0.5*deg2rad(_spreadAngle))
-		var subAngle : float = 1/(_nbBullet - 1)
-		for i in range(_nbBullet): # -> rendre variable
+		var subAngle : float = 1.0/(_nbBullet - 1)
+		for _i in range(_nbBullet):
 			var bullet : Bullet = _childData.bulletScene.instance()
 			get_tree().current_scene.add_child(bullet)
 			bullet.initBullet(self.global_transform.origin, currentDir, playerNumber, _childData)

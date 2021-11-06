@@ -71,6 +71,6 @@ func _on_VisibilityNotifier_screen_exited():
 
 func _on_BellCurveBullet_body_entered(body):
 	if body.has_method("damage")==true:
-		body.damage(1)
+		body.damage(_damage)
 	queue_free()
 

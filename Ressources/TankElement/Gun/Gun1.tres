@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://Ressources/TankElement/Gun/GunData.gd" type="Script" id=1]
-[ext_resource path="res://Ressources/BulletData/BasicBullet1.tres" type="Resource" id=2]
+[ext_resource path="res://Ressources/BulletData/SpreadBulletData1.tres" type="Resource" id=2]
 [ext_resource path="res://Assets/Meshs/Canon1.mesh" type="ArrayMesh" id=3]
 
 [resource]

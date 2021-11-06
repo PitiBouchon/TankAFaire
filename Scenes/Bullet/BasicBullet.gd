@@ -25,6 +25,6 @@ func _on_VisibilityNotifier_screen_exited() -> void:
 
 func _on_BasicBullet_body_entered(body : Node) -> void:
 	if body.has_method("damage")==true:
-		body.damage(1)
+		body.damage(_damage)
 	queue_free()
 	pass # Replace with function body.

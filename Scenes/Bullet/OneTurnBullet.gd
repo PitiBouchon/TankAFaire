@@ -49,5 +49,5 @@ func _on_VisibilityNotifier_screen_exited():
 # En cas d'impact sur l'autre char, on fait des dégâts et on disparaît
 func _on_OneTurnBullet_body_entered(body):
 	if body.has_method("damage")==true:
-		body.damage(1)
+		body.damage(_damage)
 	queue_free()

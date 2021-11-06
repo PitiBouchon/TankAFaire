@@ -114,7 +114,7 @@ func _process(delta):
 	processChassi(delta)
 	processTurret(delta)
 	_mainReloadTimer += delta
-	_secReloadTimer
+	_secReloadTimer += delta
 	_dashTimer += delta
 	_chassiFreezTimer += delta
 	_turretFreezTimer += delta
@@ -202,13 +202,20 @@ func processTurret(delta) -> void:
 				if _mainReloadTimer > _mainReloadCooldown:
 					_mainReloadTimer=0 #Permet de gérer le reload
 					mainShoot() 
+			if Input.is_action_just_pressed("player1_secShoot"):
+				if _secReloadTimer > _secReloadCooldown:
+					_secReloadTimer = 0
+					secShoot()
+			
 		if _playerNumber == 2:
 			if Input.is_action_pressed("player2_shoot"):
 				if _mainReloadTimer > _mainReloadCooldown:
 					_mainReloadTimer=0
 					mainShoot() 
-		
-		
+			if Input.is_action_just_pressed("player2_secShoot"):
+				if _secReloadTimer > _secReloadCooldown:
+					_secReloadTimer = 0
+					secShoot()
 
 #This function handles the firing event
 func mainShoot() -> void:
@@ -230,7 +237,7 @@ func mainShoot() -> void:
 		_turretFreezTimer = 0
 
 
-func secShoot() -> void:
+func secShoot() -> void:	
 	var bullet : Bullet = _secBulletData.bulletScene.instance()
 	if !_bulletData.relativeToGun:
 		get_tree().current_scene.add_child(bullet)
@@ -238,9 +245,9 @@ func secShoot() -> void:
 	else:
 		gun.add_child(bullet)
 		bullet.initBullet(secMuzzle.translation, Vector3.BACK, _playerNumber, _bulletData)
-		bullet.scale.x *= (1 / turret.scale.x) * (1 / gun.scale.x)
-		bullet.scale.y *= (1 / turret.scale.y) * (1 / gun.scale.y)
-		bullet.scale.z *= (1 / turret.scale.z) * (1 / gun.scale.z)
+		bullet.scale.x *= (1 / turret.scale.x)
+		bullet.scale.y *= (1 / turret.scale.y)
+		bullet.scale.z *= (1 / turret.scale.z)
 	
 	if _secBulletData.stopChassiMovement :
 		_chassiFreezTimer = 0
