@@ -4,12 +4,14 @@ class_name Bullet
 
 var _dir : Vector3
 var _playerNumber : int;
+var _data : BulletData
 
 
-func initBullet(pos : Vector3, dir : Vector3, playerNumber : int) -> void :
+func initBullet(pos : Vector3, dir : Vector3, playerNumber : int, data : BulletData) -> void :
 	translation = pos
 	_dir = dir
 	_playerNumber = playerNumber
+	_data = data
 	self.set_collision_mask_bit(0,false)
 	self.set_collision_layer_bit(0,false)
 	self.set_collision_mask_bit(3,true)

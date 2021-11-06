@@ -188,12 +188,19 @@ func processTurret(delta) -> void:
 				shoot() 
 	return
 
-#This function handles the firing event -> need transfer to gun
+#This function handles the firing event
 func shoot() -> void:
 	var bullet : Bullet = _projectile.instance()
-	get_tree().current_scene.add_child(bullet)
-	bullet.initBullet(muzzle.global_transform.origin, gun.global_transform.basis.z, _playerNumber)
-	pass
+	if !_bulletData.relativeToGun:
+		get_tree().current_scene.add_child(bullet)
+		bullet.initBullet(muzzle.global_transform.origin, gun.global_transform.basis.z, _playerNumber, _bulletData)
+	else:
+		gun.add_child(bullet)
+		bullet.initBullet(muzzle.translation, Vector3.BACK, _playerNumber, _bulletData)
+		bullet.scale.x *= (1 / turret.scale.x) * (1 / gun.scale.x)
+		bullet.scale.y *= (1 / turret.scale.y) * (1 / gun.scale.y)
+		bullet.scale.z *= (1 / turret.scale.z) * (1 / gun.scale.z)
+
 
 #This function IS CALLED BY THE PROJECTILE THAT HIT THE TANK
 func damage(dmg) -> void:

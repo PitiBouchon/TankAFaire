@@ -1,13 +1,14 @@
 extends Bullet
+class_name BellCurvedBullet
 
 #La hauteur de l'apogée du projectile 
-export(float) var _height
+var _height : float
 
 #La distance entre le point de départ et le point d'arrivée
-export(float) var _distance
+var _distance : float
 
 #La durée en l'air de la balle
-export(float) var _duration
+var _duration : float 
 
 #Le temps qui s'est écoulé jusqu'ici (0 au départ, augment de delta à chaque appel de _process)
 var _elapsedTime : float
@@ -22,12 +23,21 @@ var _currentHeight : float
 var _norm : Vector3
 
 #override
-func initBullet(pos : Vector3, dir : Vector3, playerNumber : int) -> void :
-	.initBullet(pos, dir, playerNumber)
-	_currentDist = 0
-	_currentHeight = translation.y
-	_norm = _dir.normalized()
-	_elapsedTime = 0
+func initBullet(pos : Vector3, dir : Vector3, playerNumber : int, data : BulletData) -> void :
+	.initBullet(pos, dir, playerNumber, data)
+	
+	var bulletData : BellCurvedBulletData = data as BellCurvedBulletData
+	if bulletData == null :
+		queue_free()
+	else :
+		_height = bulletData.height
+		_distance = bulletData.distance
+		_duration = bulletData.duration
+		
+		_currentDist = 0
+		_currentHeight = translation.y
+		_norm = _dir.normalized()
+		_elapsedTime = 0
 
 
 #Calcule la distance de la balle au char à l'instant t

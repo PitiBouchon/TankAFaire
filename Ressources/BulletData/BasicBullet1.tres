@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://Ressources/BulletData/BulletData.gd" type="Script" id=1]
+[ext_resource path="res://Ressources/BulletData/BasicBulletData.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Bullet/BasicBullet.tscn" type="PackedScene" id=2]
 
 [resource]
@@ -8,4 +8,7 @@ script = ExtResource( 1 )
 bulletScene = ExtResource( 2 )
 relativeToGun = false
 stopTurretRotation = false
+turretFreezTime = 0.0
 stopChassiMovement = false
+chassiFreezTime = 0.0
+speed = 20.0

@@ -1,15 +1,21 @@
 extends Bullet
+class_name BasicBullet
 
-export (float) var speed
+var _speed : float = 0
 
 
 #override
-func initBullet(pos : Vector3, dir : Vector3, playerNumber : int) -> void :
-	.initBullet(pos, dir, playerNumber)
+func initBullet(pos : Vector3, dir : Vector3, playerNumber : int, data : BulletData) -> void :
+	.initBullet(pos, dir, playerNumber, data)
+	var bulletData : BasicBulletData = data as BasicBulletData
+	if bulletData == null:
+		queue_free()
+	else :
+		_speed = bulletData.speed
 
 
 func _process(delta):
-	translate(_dir * speed * delta)
+	translate(_dir * _speed * delta)
 
 
 func _on_VisibilityNotifier_screen_exited() -> void:

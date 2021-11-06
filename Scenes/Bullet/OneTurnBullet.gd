@@ -1,6 +1,7 @@
 extends Bullet
+class_name OneTurnBullet
 
-export(float) var speed
+var _speed : float
 
 #La valeur de l'ID de la cible
 var _target : int
@@ -13,9 +14,16 @@ var _tolerance : float = 1
 
 
 #On calcule la cible avec 3-playerNumber, qui vaut 1 si le tireur est 2 et 2 si le tireur est 1.
-func initBullet(pos : Vector3, dir : Vector3, playerNumber : int) -> void :
-	.initBullet(pos, dir, playerNumber)
+func initBullet(pos : Vector3, dir : Vector3, playerNumber : int, data : BulletData) -> void :
+	.initBullet(pos, dir, playerNumber, data)
 	_target = 3-playerNumber
+	var bulletData : OneTurnBulletData = data as OneTurnBulletData
+	if bulletData == null :
+		queue_free()
+	else:
+		_speed = bulletData.speed
+	
+	
 
 
 ## On tourne si on croise l'ennemi et sinon, on avance
@@ -31,7 +39,7 @@ func _process(delta):
 			_dir = _dir.rotated(Vector3.UP, deg2rad(90))
 		else :
 			_dir = _dir.rotated(Vector3.UP, deg2rad(-90))
-	translate(_dir * speed * delta)
+	translate(_dir * _speed * delta)
 
 
 # La fonction appelée lorsque la balle sort de l'écran

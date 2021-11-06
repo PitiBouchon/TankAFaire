@@ -1,37 +1,47 @@
 extends Bullet
+class_name Landmine
 
-export(float) var detectionRad
+var _detectionRad : float
 
-export(float) var damage
+var _damage : float
 
-export(float) var countdown
+var _countdown : float
 
-export(float) var delay
+var _delay : float
 
-var elapsedTime : float = 0
+var _elapsedTime : float = 0
 
-var triggered : bool = false
+var _triggered : bool = false
 
-func initBullet(pos : Vector3, dir : Vector3, playerNumber : int) -> void :
-	.initBullet(pos, dir, playerNumber)
-	#scale = Vector3(detectionRad, detectionRad, detectionRad)
-	$CollisionShape.shape.radius = detectionRad
+func initBullet(pos : Vector3, dir : Vector3, playerNumber : int, data : BulletData) -> void :
+	.initBullet(pos, dir, playerNumber, data)
+	var bulletData : LandmineData = data as LandmineData
+	
+	if bulletData == null :
+		queue_free()
+	else:
+		_detectionRad = bulletData.detectionRad
+		_damage = bulletData.damage
+		_countdown = bulletData.countdown
+		_delay = bulletData.delay
+		
+		$CollisionShape.shape.radius = _detectionRad
 
 
 func _process(delta):
-	elapsedTime += delta
-	if !triggered  && elapsedTime >= countdown :
+	_elapsedTime += delta
+	if !_triggered  && _elapsedTime >= _countdown :
 		explode()
 
 # Faut gérer les délais
 func _on_Landmine_body_entered(body):
-	triggered = true
-	yield(get_tree().create_timer(delay), "timeout")
+	_triggered = true
+	yield(get_tree().create_timer(_delay), "timeout")
 	explode()
 
 func explode():
 	var overlaps = get_overlapping_bodies()
 	for target in overlaps:
 		if target.has_method("damage"):
-			target.damage(damage)
+			target.damage(_damage)
 	queue_free()
