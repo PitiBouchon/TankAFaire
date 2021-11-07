@@ -2,7 +2,8 @@ extends KinematicBody
 class_name Tank
 
 
-const _angleAdjustSpeed = 30
+export (float) var _angleAdjustSpeed = 90
+export (float) var _minDmg = 1 
 
 onready var chassi = $Chassi
 onready var track = $Chassi/Track
@@ -15,7 +16,8 @@ onready var secMuzzle = $Turret/secMuzzle
 var _playerNumber : int
 
 var _speed : float
-var _health : int
+var _health : float
+var _armor : float
 var _target : Vector3
 
 #chassi
@@ -54,6 +56,7 @@ func loadData(data : TankData, player : int) -> void:
 	
 	_speed = computeSpeed(data)
 	_health = computeHealth(data)
+	_armor = computeArmor(data)
 	
 	_chassiDirection = Vector3.ZERO
 	_chassiFreezDuration = data.gun.bulletData.chassiFreezTime
@@ -108,11 +111,16 @@ func loadData(data : TankData, player : int) -> void:
 	return
 
 func computeSpeed(data : TankData) -> float:
-	#need implementation
-	return 10.0
+	var weight = data.turret.weight + data.chassi.weight + data.track.weight + data.gun.weight + data.engine.weight
+	var power = data.engine.horsePower
+	var speedFactor = data.track.speedFactor
+	return speedFactor * power / weight
 
 func computeHealth(data : TankData) -> float:
 	return data.turret.healthPoints + data.chassi.healthPoints
+
+func computeArmor(data : TankData) -> float:
+	return 0.5*data.turret.armor + 0.5*data.chassi.armor
 
 
 
@@ -283,7 +291,7 @@ func secShoot() -> void:
 
 #This function IS CALLED BY THE PROJECTILE THAT HIT THE TANK
 func damage(dmg) -> void:
-	_health = _health-dmg
+	_health -= max(dmg - _armor, _minDmg)
 	if _health<=0:
 		queue_free()
 		get_tree().reload_current_scene() #POUR LE MOMENT SI UN TANK MEURE LE JEU CRASH - DONC ON QUITTE

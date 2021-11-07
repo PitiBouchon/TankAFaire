@@ -21,9 +21,8 @@ surfaces/0 = {
 [resource]
 script = ExtResource( 1 )
 weight = 100.0
-armorType = 2
+armor = 0.0
 healthPoints = 3.0
 chassiMesh = SubResource( 1 )
-chassiPos = Vector3( 0, 0, 0 )
 chassiScale = Vector3( 2, 1.5, 4 )
 turretPos = Vector3( 0, 2, -2 )
