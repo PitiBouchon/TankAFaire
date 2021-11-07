@@ -12,7 +12,7 @@ var _elapsedTime : float = 0
 var _triggered : bool = false
 
 func initBullet(pos : Vector3, dir : Vector3, playerNumber : int, data : BulletData) -> void :
-	.initBullet(pos, dir, playerNumber, data)
+	.initBullet(Vector3(pos.x, 0, pos.y), dir, playerNumber, data)
 	var bulletData : LandmineData = data as LandmineData
 	
 	if bulletData == null :

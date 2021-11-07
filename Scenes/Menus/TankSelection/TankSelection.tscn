@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Menus/TankSelection/TankSelection.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/TankElement/Engine/Engine1.res" type="Resource" id=2]
@@ -9,16 +9,20 @@
 [ext_resource path="res://Scenes/Tank/DisplayTank.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Menus/UI/UITankSelection.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Ressources/TankElement/Gun/Gun1.tres" type="Resource" id=9]
+[ext_resource path="res://Ressources/TankElement/Chassi/ChassiObliterator1.tres" type="Resource" id=10]
+[ext_resource path="res://Ressources/TankElement/Engine/Engine2.tres" type="Resource" id=11]
+[ext_resource path="res://Ressources/TankElement/Turret/TurretObliterator1.tres" type="Resource" id=12]
 
 [node name="TankSelection" type="Spatial"]
 script = ExtResource( 1 )
-chassiList = [ ExtResource( 4 ), ExtResource( 6 ) ]
-engineList = [ ExtResource( 2 ) ]
+chassiList = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 10 ) ]
+engineList = [ ExtResource( 2 ), ExtResource( 11 ) ]
 trackList = [ ExtResource( 3 ) ]
-turretList = [ ExtResource( 5 ) ]
+turretList = [ ExtResource( 5 ), ExtResource( 12 ) ]
 gunList = [ ExtResource( 9 ) ]
 
 [node name="Camera" type="Camera" parent="."]
+far = 150.0
 
 [node name="Player1" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -4, -20 )

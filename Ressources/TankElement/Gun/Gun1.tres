@@ -9,6 +9,7 @@ script = ExtResource( 1 )
 weight = 1.0
 bulletData = ExtResource( 2 )
 gunMesh = ExtResource( 3 )
+gunRotation = Vector3( 0, 0, 0 )
 gunScale = Vector3( 0.25, 0.25, 3 )
 relativeMuzzlePosition = Vector3( 0, 0, 1.5 )
 reloadTime = 1.0

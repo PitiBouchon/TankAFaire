@@ -57,8 +57,8 @@ func updatePlayer1() -> void:
 	var hp : float = tankOne.chassi.healthPoints + tankOne.turret.healthPoints
 	var weight : float = tankOne.chassi.weight + tankOne.engine.weight + tankOne.track.weight + tankOne.turret.weight + tankOne.gun.weight
 	var power : float = tankOne.engine.horsePower
-	var armor : float = 0.5 * tankOne.chassi.armorType + 0.5 * tankOne.turret.armorType
-	var maniability : int = tankOne.track.maniabilityLevel
+	var armor : float = 0.5 * tankOne.chassi.armor + 0.5 * tankOne.turret.armor
+	var maniability : int = tankOne.track.speedFactor
 	
 	uiPlayer1.updateStats(hp, weight, power, armor, maniability)
 	
@@ -75,8 +75,8 @@ func updatePlayer2() -> void:
 	var hp : float = tankTwo.chassi.healthPoints + tankTwo.turret.healthPoints
 	var weight : float = tankTwo.chassi.weight + tankTwo.engine.weight + tankTwo.track.weight + tankTwo.turret.weight + tankTwo.gun.weight
 	var power : float = tankTwo.engine.horsePower
-	var armor : float = 0.5 * tankTwo.chassi.armorType + 0.5 * tankTwo.turret.armorType
-	var maniability : int = tankTwo.track.maniabilityLevel
+	var armor : float = 0.5 * tankTwo.chassi.armor + 0.5 * tankTwo.turret.armor
+	var maniability : int = tankTwo.track.speedFactor
 	
 	uiPlayer2.updateStats(hp, weight, power, armor, maniability)
 	

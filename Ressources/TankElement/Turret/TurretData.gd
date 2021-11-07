@@ -6,7 +6,9 @@ export (float) var armor
 export (float) var healthPoints 
 
 export (Mesh) var turretMesh
+export (Vector3) var turretRotation
 export (Vector3) var turretScale
+export (Vector3) var turretPosOffset
 
 export (Vector3) var gunPos
 

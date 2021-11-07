@@ -62,7 +62,7 @@ func loadData(data : TankData, player : int) -> void:
 	_chassiFreezDuration = data.gun.bulletData.chassiFreezTime
 	_chassiFreezTimer = _chassiFreezDuration
 	
-	_baseTurretOffset = data.chassi.turretPos
+	_baseTurretOffset = data.chassi.turretPos + data.turret.turretPosOffset
 	_turretFreezDuration = data.gun.bulletData.turretFreezTime
 	_turretFreezTimer = _turretFreezDuration
 	_angleAdjust = 0
@@ -94,18 +94,22 @@ func loadData(data : TankData, player : int) -> void:
 	#meshes
 	chassi.mesh = data.chassi.chassiMesh
 	chassi.translation = data.chassi.chassiPos
+	chassi.rotation_degrees = data.chassi.chassiRotation
 	chassi.scale = data.chassi.chassiScale
 	
 	track.mesh = data.track.trackMesh
-	track.translation = data.track.trackPos
+	track.translation = data.chassi.trackPos + data.track.trackPosOffset
+	track.rotation_degrees = data.track.trackRotation
 	track.scale = data.track.trackScale
 	
 	turret.mesh = data.turret.turretMesh
-	turret.translation = data.chassi.turretPos
+	turret.translation = data.chassi.turretPos + data.turret.turretPosOffset
+	turret.rotation_degrees = data.turret.turretRotation
 	turret.scale = data.turret.turretScale
 	
 	gun.mesh = data.gun.gunMesh
 	gun.translation = data.turret.gunPos
+	gun.rotation_degrees = data.gun.gunRotation
 	gun.scale = data.gun.gunScale
 	
 	return

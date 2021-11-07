@@ -5,6 +5,7 @@ export (float) var weight
 export (Resource) var bulletData
 
 export (Mesh) var gunMesh
+export (Vector3) var gunRotation
 export (Vector3) var gunScale
 
 export (Vector3) var relativeMuzzlePosition
