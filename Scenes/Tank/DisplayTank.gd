@@ -11,8 +11,8 @@ func updateDisplay(data : TankData) -> void:
 	
 	$Chassi/Track.mesh = data.track.trackMesh
 	$Chassi/Track.translation = data.chassi.trackPos + data.track.trackPosOffset
-	$Chassi/Track.rotation_degrees = data.track.trackRotation
-	$Chassi/Track.scale = data.track.trackScale
+	$Chassi/Track.rotation_degrees = data.track.trackRotation - data.chassi.chassiRotation
+	$Chassi/Track.scale = data.track.trackScale  *  (data.chassi.chassiScale).inverse()
 	
 	$Turret.mesh = data.turret.turretMesh
 	$Turret.translation = data.chassi.turretPos + data.turret.turretPosOffset

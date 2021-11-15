@@ -11,6 +11,6 @@ healthPoints = 10.0
 chassiMesh = ExtResource( 2 )
 chassiRotation = Vector3( 0, 0, 0 )
 chassiPos = Vector3( 0, 0, 0 )
-chassiScale = Vector3( 1, 1, 1 )
+chassiScale = Vector3( 1.83, 1.83, 1.83 )
 turretPos = Vector3( 0, 0, 0 )
 trackPos = Vector3( 0, 0, 0 )
