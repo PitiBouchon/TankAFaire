@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Ressources/TankElement/Chassi/ChassiData.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Meshs/Chassi_Scrapper.tres" type="ArrayMesh" id=2]
+
+[resource]
+script = ExtResource( 1 )
+weight = 10.0
+armor = 10.0
+healthPoints = 10.0
+chassiMesh = ExtResource( 2 )
+chassiRotation = Vector3( 0, 0, 0 )
+chassiPos = Vector3( 0, 0, 0 )
+chassiScale = Vector3( 1, 1, 1 )
+turretPos = Vector3( 0, 0, 0 )
+trackPos = Vector3( 0, 0, 0 )

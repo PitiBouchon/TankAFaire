@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Ressources/TankElement/Engine/EngineData.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+weight = 10.0
+horsePower = 40.0
+dashDistance = 30.0
+dashSpeed = 60.0
+dashCooldown = 5.0

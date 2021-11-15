@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Ressources/TankElement/Track/TrackData.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Meshs/Tracks_Kholkoze.tres" type="ArrayMesh" id=2]
+
+[resource]
+script = ExtResource( 1 )
+weight = 10.0
+speedFactor = 1.0
+trackMesh = ExtResource( 2 )
+trackPosOffset = Vector3( 0, 0, 0 )
+trackRotation = Vector3( 0, 0, 0 )
+trackScale = Vector3( 1, 1, 1 )
