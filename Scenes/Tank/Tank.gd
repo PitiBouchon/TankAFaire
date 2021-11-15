@@ -24,13 +24,14 @@ var _target : Vector3
 var _chassiDirection : Vector3
 var _chassiFreezDuration : float
 var _chassiFreezTimer : float
+var _chassiAngleOffset : float
 
 #turret
 var _baseTurretOffset : Vector3
 var _turretFreezDuration : float
 var _turretFreezTimer : float
 var _angleAdjust : float
-
+var _turretAngleOffset : float
 
 # Main gun
 var _bulletData : BulletData
@@ -61,11 +62,13 @@ func loadData(data : TankData, player : int) -> void:
 	_chassiDirection = Vector3.ZERO
 	_chassiFreezDuration = data.gun.bulletData.chassiFreezTime
 	_chassiFreezTimer = _chassiFreezDuration
+	_chassiAngleOffset = data.chassi.chassiRotation.y;
 	
 	_baseTurretOffset = data.chassi.turretPos + data.turret.turretPosOffset
 	_turretFreezDuration = data.gun.bulletData.turretFreezTime
 	_turretFreezTimer = _turretFreezDuration
 	_angleAdjust = 0
+	_turretAngleOffset = data.turret.turretRotation.y
 	
 	mainMuzzle.translation = data.gun.relativeMuzzlePosition
 	_bulletData = data.gun.bulletData 
@@ -98,9 +101,9 @@ func loadData(data : TankData, player : int) -> void:
 	chassi.scale = data.chassi.chassiScale
 	
 	track.mesh = data.track.trackMesh
-	track.translation = data.chassi.trackPos + data.track.trackPosOffset
-	track.rotation_degrees = data.track.trackRotation
-	track.scale = data.track.trackScale
+	track.translation = data.chassi.trackPos + data.track.trackPosOffset 
+	track.rotation_degrees = data.track.trackRotation - data.chassi.chassiRotation
+	track.scale = data.track.trackScale *  vec3RotInv(data.chassi.chassiScale, data.chassi.chassiRotation)
 	
 	turret.mesh = data.turret.turretMesh
 	turret.translation = data.chassi.turretPos + data.turret.turretPosOffset
@@ -195,6 +198,8 @@ func processChassi(delta) -> void:
 		chassi.rotation.y = acos(_chassiDirection.z)
 		if _chassiDirection.x != 0 :
 			chassi.rotation *= sign(_chassiDirection.x)
+		
+		chassi.rotation.y += deg2rad(_chassiAngleOffset)
 
 func processDash() -> void:
 	if _dashTimer > _dashDuration :
@@ -228,10 +233,11 @@ func processTurret(delta) -> void:
 			else:
 				_angleAdjust = 0
 		
-		turret.rotation.y = acos(direction.z) 
+		turret.rotation.y = acos(direction.z)
 		if direction.x != 0 :
 			turret.rotation *= sign(direction.x)
 		turret.rotation.y += deg2rad(_angleAdjust)
+		turret.rotation.y += deg2rad(_turretAngleOffset)
 		
 		#On gère le tir des tanks :
 		if _playerNumber == 1:
@@ -300,3 +306,17 @@ func damage(dmg) -> void:
 		queue_free()
 		get_tree().reload_current_scene() #POUR LE MOMENT SI UN TANK MEURE LE JEU CRASH - DONC ON QUITTE
 	pass
+
+
+
+
+
+func vec3Inv(vector : Vector3) -> Vector3 :
+	return Vector3(1/ vector.x, 1/ vector.y, 1/ vector.z)
+
+func vec3RotInv(vector : Vector3, rot : Vector3) -> Vector3 :
+	var invVect := vec3Inv(vector)
+	invVect = invVect.rotated(Vector3(1,0,0), deg2rad(-rot.x))
+	invVect = invVect.rotated(Vector3(0,1,0), deg2rad(-rot.y))
+	invVect = invVect.rotated(Vector3(0,0,1), deg2rad(-rot.z))
+	return invVect
