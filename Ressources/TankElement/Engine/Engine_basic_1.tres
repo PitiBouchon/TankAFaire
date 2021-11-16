@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource( 1 )
 weight = 10.0
-horsePower = 40.0
+horsePower = 400.0
 dashDistance = 30.0
 dashSpeed = 60.0
 dashCooldown = 5.0
