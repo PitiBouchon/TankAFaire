@@ -1,10 +1,13 @@
 extends Bullet
 class_name Landmine
 
+#Le rayon de détection de la mine
 var _detectionRad : float
 
+#Le compte à rebours après la pose avant l'explosion autonome de la mine
 var _countdown : float
 
+#Le délai entre l'activation manuelle et l'explosion de la bombe
 var _delay : float
 
 var _elapsedTime : float = 0

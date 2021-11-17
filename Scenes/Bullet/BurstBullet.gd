@@ -3,10 +3,11 @@ class_name BurstBullet
 
 var _childData : BulletData
 
+#La durée entre l'émission de deux balles 
 var _interBulletTime : float
 
+#Le nombre de balles
 var _amount : int
-
 
 func initBullet(pos : Vector3, dir : Vector3, playerNumber : int, data : BulletData) -> void :
 	.initBullet(pos, dir, playerNumber, data)
