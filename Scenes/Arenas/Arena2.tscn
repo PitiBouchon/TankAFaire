@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/Arenas/AranaElements/BorderWall.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Arenas/AranaElements/Connector.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Arenas/AranaElements/Wall.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Textures/Arena/Ground_TerrainVague.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Textures/Arena/Ground_2.jpg" type="Texture" id=5]
 
 [node name="Arena2" type="Spatial"]
 
@@ -122,5 +122,5 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -33, 0,
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
 
 [node name="Ground" type="Sprite3D" parent="."]
-transform = Transform( 15, 0, 0, 0, -4.37114e-07, -1, 0, 10, -4.37114e-08, 0, 0, 0 )
+transform = Transform( 13, 0, 0, 0, -3.23464e-07, -1, 0, 7.4, -4.37114e-08, 0, 0, 0 )
 texture = ExtResource( 5 )
