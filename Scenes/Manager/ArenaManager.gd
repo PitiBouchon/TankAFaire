@@ -12,6 +12,8 @@ var tank2
 
 onready var healthP1 : TextureProgress = $UI/Health_P1
 onready var healthP2 : TextureProgress = $UI/Health_P2
+onready var dashP1 : AnimatedSprite = $UI/DashControlP1/Dash_P1
+onready var dashP2 : AnimatedSprite = $UI/DashControlP2/Dash_P2
 
 
 func inistanciateTank(tankOne : TankData, tankTwo : TankData) -> void:
@@ -36,6 +38,11 @@ func _process(delta):
 	healthP1.value = 100 * tank1.getHealthRatio()
 	healthP2.value = 100 * tank2.getHealthRatio()
 
+	var timingDashP1 = tank1.getDashDuration()
+	# print("T1 : ", timingDashP1)
+	dashP1.frame = int(4 * timingDashP1)
+	var timingDashP2 = tank2.getDashDuration()
+	dashP2.frame = int(4 * timingDashP2)
 
 func getTankPositionByID(id : int) -> Vector3:
 	if id == 1:

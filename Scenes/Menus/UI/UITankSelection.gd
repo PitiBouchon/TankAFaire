@@ -53,7 +53,8 @@ func _input(event):
 		elif event.is_action_pressed("player1_left"):
 			playerSelection.y = clamp(playerSelection.y - 1, 0, selectionLimit.y - 1)
 		
-		if event.is_action_pressed("player1_select") :
+		if event.is_action_pressed("player1_select"):
+			$SelectSound.play()
 			signalEmiter()
 		
 	elif !playerReady && playerNumber == 2 :
@@ -66,7 +67,8 @@ func _input(event):
 		elif event.is_action_pressed("player2_left"):
 			playerSelection.y = clamp(playerSelection.y - 1, 0, selectionLimit.y - 1)
 		
-		if event.is_action_pressed("player2_select") :
+		if event.is_action_pressed("player2_select"):
+			$SelectSound.play()
 			signalEmiter()
 	
 	updateDisplay()

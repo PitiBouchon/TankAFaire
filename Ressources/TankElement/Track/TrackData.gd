@@ -3,6 +3,7 @@ class_name TrackData
 
 export (float) var weight
 export (float) var speedFactor
+export (float) var armorLoss
 
 export (Mesh) var trackMesh
 export (Vector3) var trackPosOffset

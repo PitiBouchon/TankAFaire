@@ -3,7 +3,8 @@ class_name Tank
 
 
 export (float) var _angleAdjustSpeed = 90
-export (float) var _minDmg = 1 
+export (float) var _minDmg = 5 
+export (float) var _defaultSpeed = 8 
 
 onready var chassi = $Chassi
 onready var track = $Chassi/Track
@@ -119,13 +120,13 @@ func computeSpeed(data : TankData) -> float:
 	var weight = data.turret.weight + data.chassi.weight + data.track.weight + data.gun.weight + data.engine.weight
 	var power = data.engine.horsePower
 	var speedFactor = data.track.speedFactor
-	return speedFactor * power / weight
+	return _defaultSpeed * (100 + speedFactor + power - weight)/100
 
 func computeHealth(data : TankData) -> float:
 	return data.turret.healthPoints + data.chassi.healthPoints
 
 func computeArmor(data : TankData) -> float:
-	return 0.5*data.turret.armor + 0.5*data.chassi.armor
+	return 0.5*data.turret.armor + 0.5*data.chassi.armor - data.track.armorLoss
 
 
 
@@ -240,6 +241,7 @@ func processTurret(delta) -> void:
 			if Input.is_action_pressed("player1_shoot"):
 				if _mainReloadTimer > _mainReloadCooldown:
 					_mainReloadTimer=0 #Permet de gérer le reload
+					$FireSound.play()
 					mainShoot() 
 			if Input.is_action_just_pressed("player1_secShoot"):
 				if _secReloadTimer > _secReloadCooldown:
@@ -250,6 +252,7 @@ func processTurret(delta) -> void:
 			if Input.is_action_pressed("player2_shoot"):
 				if _mainReloadTimer > _mainReloadCooldown:
 					_mainReloadTimer=0
+					$FireSound.play()
 					mainShoot() 
 			if Input.is_action_just_pressed("player2_secShoot"):
 				if _secReloadTimer > _secReloadCooldown:
@@ -298,6 +301,7 @@ func secShoot() -> void:
 #This function IS CALLED BY THE PROJECTILE THAT HIT THE TANK
 func damage(dmg) -> void:
 	_health -= max(dmg - _armor, _minDmg)
+	$DamageSound.play()
 	if _health<=0:
 		queue_free()
 		get_tree().reload_current_scene() #POUR LE MOMENT SI UN TANK MEURE LE JEU CRASH - DONC ON QUITTE
@@ -305,3 +309,6 @@ func damage(dmg) -> void:
 
 func getHealthRatio() -> float:
 	return _health/_maxHealth 
+
+func getDashDuration() -> float:
+	return clamp(_dashTimer, 0, _dashCooldown) / _dashCooldown

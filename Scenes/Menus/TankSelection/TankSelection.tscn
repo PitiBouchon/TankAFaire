@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/Menus/TankSelection/TankSelection.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/TankElement/Engine/Engine_basic_1.tres" type="Resource" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Ressources/TankElement/Chassi/Chassi_Kholkose_1.tres" type="Resource" id=14]
 [ext_resource path="res://Ressources/TankElement/Turret/Turret_Obliterator_1.tres" type="Resource" id=15]
 [ext_resource path="res://Ressources/TankElement/Turret/Turret_Scrapper_1.tres" type="Resource" id=16]
+[ext_resource path="res://Assets/ImportedScene/BackgroundWall.glb" type="PackedScene" id=17]
 
 [node name="TankSelection" type="Spatial"]
 script = ExtResource( 1 )
@@ -45,6 +46,9 @@ playerNumber = 1
 anchor_left = 0.85
 anchor_right = 0.99
 playerNumber = 2
+
+[node name="BackgroundWall" parent="." instance=ExtResource( 17 )]
+transform = Transform( 3.4, 0, 0, 0, 3.4, 0, 0, 0, 1, 0, 0, -30 )
 
 [connection signal="next_chassi" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_next_chassi"]
 [connection signal="next_engine" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_next_engine"]
