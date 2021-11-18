@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource( 1 )
-weight = 10.0
+weight = 9.0
 bulletData = ExtResource( 3 )
 gunMesh = ExtResource( 2 )
 gunRotation = Vector3( 0, 0, 0 )
