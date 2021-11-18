@@ -2,6 +2,8 @@ extends Spatial
 class_name TanckSelection
 
 signal tank_selected(tank1, tank2)
+signal timeout
+
 
 export (Array, Resource) var chassiList
 export (Array, Resource) var engineList
@@ -13,6 +15,7 @@ onready var uiPlayer1 : UITankSelection = $UI/UIPlayer1
 onready var uiPlayer2 : UITankSelection = $UI/UIPlayer2
 onready var tankPlayer1 : DisplayTank = $Player1
 onready var tankPlayer2 : DisplayTank = $Player2
+onready var clock : AnimatedSprite = $UI/TimerControl/Clock
 
 var tankOne : TankData
 var tankTwo : TankData
@@ -20,8 +23,8 @@ var tankTwo : TankData
 var player1Ready : bool
 var player2Ready : bool
 
-var player1Indexes : Array 
-var player2Indexes : Array 
+var player1Indexes : Array
+var player2Indexes : Array
 
 var nbChassi : int
 var nbEngine : int
@@ -45,6 +48,8 @@ func _ready():
 	
 	updatePlayer1()
 	updatePlayer2()
+	
+	clock.frame = 0
 
 
 func updatePlayer1() -> void:
@@ -87,7 +92,7 @@ func updatePlayer2() -> void:
 
 func _on_UIPlayer1_next_chassi():
 	player1Indexes[0] = (player1Indexes[0] + 1) % nbChassi
-	updatePlayer1() 
+	updatePlayer1()
 
 
 func _on_UIPlayer1_next_engine():
@@ -222,3 +227,8 @@ func _on_UIPlayer2_previous_gun():
 	else:
 		player2Indexes[4] -= 1
 	updatePlayer2()
+
+
+func _on_Clock_animation_finished():
+	emit_signal("timeout")
+	pass # Replace with function body.
