@@ -1,6 +1,8 @@
 extends Bullet
 class_name OneTurnBullet
 
+onready var mesh : MeshInstance = $MeshInstance
+
 var _speed : float
 
 #La valeur de l'ID de la cible
@@ -18,6 +20,9 @@ func initBullet(pos : Vector3, dir : Vector3, playerNumber : int, data : BulletD
 	.initBullet(pos, dir, playerNumber, data)
 	_target = 3-playerNumber
 	var bulletData : OneTurnBulletData = data as OneTurnBulletData
+	mesh.rotation.y = acos(_dir.z)
+	if _dir.x != 0 :
+		mesh.rotation *= sign(_dir.x)
 	if bulletData == null :
 		queue_free()
 	else:
@@ -39,6 +44,9 @@ func _process(delta):
 			_dir = _dir.rotated(Vector3.UP, deg2rad(90))
 		else :
 			_dir = _dir.rotated(Vector3.UP, deg2rad(-90))
+		mesh.rotation.y = acos(_dir.z)
+		if _dir.x != 0 :
+			mesh.rotation *= sign(_dir.x)
 	translate(_dir * _speed * delta)
 
 
