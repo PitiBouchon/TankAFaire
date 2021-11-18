@@ -12,16 +12,23 @@ onready var p2Deafeat : TextureRect = $P2_Defeat
 
 func init(victorId) -> void:
 	
-	if victorId == 1 :
-		p1Defeat.hide()
-		p1Victory.show()
-		p2Deafeat.show()
-		p2Victory.hide()
-	else:
-		p1Defeat.show()
-		p1Victory.hide()
-		p2Deafeat.hide()
-		p2Victory.show()
+	match victorId :
+		0 :
+			p1Defeat.show()
+			p1Victory.hide()
+			p2Deafeat.show()
+			p2Victory.hide()
+		
+		1 :
+			p1Defeat.hide()
+			p1Victory.show()
+			p2Deafeat.show()
+			p2Victory.hide()
+		2 :
+			p1Defeat.show()
+			p1Victory.hide()
+			p2Deafeat.hide()
+			p2Victory.show()
 	
 	yield(get_tree().create_timer(timeOut), "timeout")
 	

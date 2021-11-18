@@ -3,6 +3,9 @@ class_name ArenaManager
 
 signal party_end(victorId)
 
+export (float) var matchDuration
+
+
 var TANK_SCENE := preload("res://Scenes/Tank/Tank.tscn")
 
 var MAP := preload("res://Scenes/Arenas/Arena2.tscn")
@@ -16,6 +19,7 @@ onready var healthP1 : TextureProgress = $UI/Health_P1
 onready var healthP2 : TextureProgress = $UI/Health_P2
 onready var dashP1 : AnimatedSprite = $UI/DashControlP1/Dash_P1
 onready var dashP2 : AnimatedSprite = $UI/DashControlP2/Dash_P2
+onready var clock : AnimatedSprite = $UI/TimerControl/Clock
 
 
 func inistanciateTank(tankOne : TankData, tankTwo : TankData) -> void:
@@ -37,6 +41,9 @@ func inistanciateTank(tankOne : TankData, tankTwo : TankData) -> void:
 	#connect signals
 	tank1.connect("tank_killed", self, "on_tank1_killed")
 	tank1.connect("tank_killed", self, "on_tank2_killed")
+	
+	clock.speed_scale = 60 / matchDuration
+	clock.frame = 0
 	
 	return
 
@@ -77,3 +84,14 @@ func bs_clear() -> void: #use in a patchwork for loading end screen, should no b
 	tank1.queue_free()
 	tank2.queue_free()
 	active_map.queue_free()
+
+
+func _on_Clock_animation_finished():
+	var gameManager = get_tree().get_root().get_node("GameManager")
+	if tank1.getHealthRatio() == tank2.getHealthRatio():
+		gameManager.bs_load_end_screen(0)
+	elif tank1.getHealthRatio() > tank2.getHealthRatio():
+		gameManager.bs_load_end_screen(1)
+	elif tank1.getHealthRatio() < tank2.getHealthRatio():
+		gameManager.bs_load_end_screen(2)
+	pass 
