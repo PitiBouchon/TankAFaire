@@ -1,6 +1,7 @@
 extends KinematicBody
 class_name Tank
 
+signal tank_killed
 
 export (float) var _angleAdjustSpeed = 90
 export (float) var _minDmg = 5 
@@ -303,8 +304,12 @@ func damage(dmg) -> void:
 	_health -= max(dmg - _armor, _minDmg)
 	$DamageSound.play()
 	if _health<=0:
-		queue_free()
-		get_tree().reload_current_scene() #POUR LE MOMENT SI UN TANK MEURE LE JEU CRASH - DONC ON QUITTE
+		#emit_signal("tank_killed")
+		# used because broken signal, should not be used
+		var gameManager = get_tree().get_root().get_node("GameManager")
+		gameManager.bs_load_end_screen(3-_playerNumber)
+		
+		
 	pass
 
 func getHealthRatio() -> float:
