@@ -3,7 +3,8 @@ class_name Tank
 
 
 export (float) var _angleAdjustSpeed = 90
-export (float) var _minDmg = 1 
+export (float) var _minDmg = 5 
+export (float) var _defaultSpeed = 8 
 
 onready var chassi = $Chassi
 onready var track = $Chassi/Track
@@ -119,13 +120,13 @@ func computeSpeed(data : TankData) -> float:
 	var weight = data.turret.weight + data.chassi.weight + data.track.weight + data.gun.weight + data.engine.weight
 	var power = data.engine.horsePower
 	var speedFactor = data.track.speedFactor
-	return speedFactor * power / weight
+	return _defaultSpeed * (100 + speedFactor + power - weight)/100
 
 func computeHealth(data : TankData) -> float:
 	return data.turret.healthPoints + data.chassi.healthPoints
 
 func computeArmor(data : TankData) -> float:
-	return 0.5*data.turret.armor + 0.5*data.chassi.armor
+	return 0.5*data.turret.armor + 0.5*data.chassi.armor - data.track.armorLoss
 
 
 
