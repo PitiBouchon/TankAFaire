@@ -1,6 +1,9 @@
 extends Bullet
 class_name BasicBullet
 
+onready var mesh : MeshInstance = $MeshInstance
+
+
 var _speed : float = 0
 
 
@@ -12,6 +15,10 @@ func initBullet(pos : Vector3, dir : Vector3, playerNumber : int, data : BulletD
 		queue_free()
 	else :
 		_speed = bulletData.speed
+	
+	mesh.rotation.y = acos(_dir.z)
+	if _dir.x != 0 :
+		mesh.rotation *= sign(_dir.x)
 
 
 func _process(delta):

@@ -3,7 +3,8 @@ class_name ArenaManager
 
 signal party_end(victorId)
 
-export (float) var matchDuration
+export (float) var matchDuration #180
+export (float) var tankScale #0.5
 
 
 var TANK_SCENE := preload("res://Scenes/Tank/Tank.tscn")
@@ -33,6 +34,10 @@ func inistanciateTank(tankOne : TankData, tankTwo : TankData) -> void:
 	
 	active_map=MAP.instance()
 	add_child(active_map)
+	
+	#scale down tank
+	tank1.scale = Vector3(tankScale, tankScale, tankScale)
+	tank2.scale = Vector3(tankScale, tankScale, tankScale)
 	
 	#We spawn the tanks at the appropriate place :
 	tank1.translation = active_map.get_node("SpawnPoints/SpawnPoint1").translation
