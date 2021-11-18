@@ -1,13 +1,15 @@
 extends Spatial
 class_name ArenaManager
 
+signal party_end(victorId)
+
 var TANK_SCENE := preload("res://Scenes/Tank/Tank.tscn")
 
 var MAP := preload("res://Scenes/Arenas/Arena2.tscn")
 
 var active_map
-var tank1
-var tank2 
+var tank1 : Tank
+var tank2 : Tank
 
 
 onready var healthP1 : TextureProgress = $UI/Health_P1
@@ -31,6 +33,11 @@ func inistanciateTank(tankOne : TankData, tankTwo : TankData) -> void:
 	#We spawn the tanks at the appropriate place :
 	tank1.translation = active_map.get_node("SpawnPoints/SpawnPoint1").translation
 	tank2.translation = active_map.get_node("SpawnPoints/SpawnPoint2").translation
+	
+	#connect signals
+	tank1.connect("tank_killed", self, "on_tank1_killed")
+	tank1.connect("tank_killed", self, "on_tank2_killed")
+	
 	return
 
 
@@ -48,3 +55,25 @@ func getTankPositionByID(id : int) -> Vector3:
 	if id == 1:
 		return tank1.translation
 	return tank2.translation
+
+
+func on_tank1_killed()-> void:
+	print("tank 1 killed")
+	emit_signal("party_end", 2)
+	tank1.queue_free()
+	tank2.queue_free()
+	active_map.queue_free()
+	pass
+
+func on_tank2_killed()-> void:
+	print("tank 2 killed")
+	emit_signal("party_end", 1)
+	tank1.queue_free()
+	tank2.queue_free()
+	active_map.queue_free()
+	pass
+
+func bs_clear() -> void: #use in a patchwork for loading end screen, should no be used
+	tank1.queue_free()
+	tank2.queue_free()
+	active_map.queue_free()
