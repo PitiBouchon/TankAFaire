@@ -299,6 +299,7 @@ func secShoot() -> void:
 #This function IS CALLED BY THE PROJECTILE THAT HIT THE TANK
 func damage(dmg) -> void:
 	_health -= max(dmg - _armor, _minDmg)
+	$DamageSound.play()
 	if _health<=0:
 		queue_free()
 		get_tree().reload_current_scene() #POUR LE MOMENT SI UN TANK MEURE LE JEU CRASH - DONC ON QUITTE
