@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Menus/EndScreen/EndScreen.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Textures/Text/P2.png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Assets/Textures/Text/thx-for-playing.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Textures/Text/victory.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Textures/Text/defeat.png" type="Texture" id=6]
+[ext_resource path="res://logo CELL.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Textures/soire.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Textures/logo_white.png" type="Texture" id=9]
 
 [node name="EndScreen" type="Control"]
 anchor_right = 1.0
@@ -92,3 +95,26 @@ stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ControlIcons" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LogoCELL" type="Sprite" parent="ControlIcons"]
+position = Vector2( -300, 0 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 7 )
+
+[node name="LogoSoire" type="Sprite" parent="ControlIcons"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 8 )
+
+[node name="LogoMinTech" type="Sprite" parent="ControlIcons"]
+position = Vector2( 300, 0 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 9 )

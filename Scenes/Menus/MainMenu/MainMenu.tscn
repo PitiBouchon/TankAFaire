@@ -1,172 +1,142 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Scenes/Menus/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Textures/UI/Button/ready-btn.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Textures/UI/Button/ready-btn-pressed.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Textures/title.png" type="Texture" id=4]
+[ext_resource path="res://logo CELL.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Textures/soire.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Textures/logo_white.png" type="Texture" id=7]
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 275, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=5]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 550, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=6]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 825, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=7]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 1100, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=8]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 1375, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=9]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 1650, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=10]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 1925, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=11]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 2200, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=12]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 2475, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=13]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 2750, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=14]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 3025, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=15]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 3300, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=16]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 3575, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=17]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 3850, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=18]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 4125, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=19]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 4400, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=20]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 4675, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=21]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 4950, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=22]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 5225, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=23]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 5500, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=24]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 5775, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=25]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 6050, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=26]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 6325, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=27]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 6600, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=28]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 6875, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=29]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 7150, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=30]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 7425, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=31]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 7700, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=32]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 7975, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=33]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 8250, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=34]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 8525, 0, 275, 211 )
 
 [sub_resource type="AtlasTexture" id=35]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 8800, 0, 275, 211 )
 
@@ -196,6 +166,31 @@ __meta__ = {
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="ControlIcons" type="Control" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+margin_left = -1.0
+margin_right = -1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LogoCELL" type="Sprite" parent="CanvasLayer/ControlIcons"]
+position = Vector2( -300, 0 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 5 )
+
+[node name="LogoSoire" type="Sprite" parent="CanvasLayer/ControlIcons"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 6 )
+
+[node name="LogoMinTech" type="Sprite" parent="CanvasLayer/ControlIcons"]
+position = Vector2( 300, 0 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 7 )
+
 [node name="Control" type="Control" parent="CanvasLayer"]
 anchor_left = 0.5
 anchor_top = 0.3
@@ -207,15 +202,15 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/Control"]
 frames = SubResource( 36 )
-frame = 21
+frame = 9
 speed_scale = 3.0
 playing = true
 
 [node name="NewGameButton" type="TextureButton" parent="CanvasLayer"]
 anchor_left = 0.5
-anchor_top = 0.75
+anchor_top = 0.85
 anchor_right = 0.5
-anchor_bottom = 0.75
+anchor_bottom = 0.85
 margin_left = -101.0
 margin_top = -30.0
 margin_right = 99.0
