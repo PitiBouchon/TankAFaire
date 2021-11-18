@@ -241,6 +241,7 @@ func processTurret(delta) -> void:
 			if Input.is_action_pressed("player1_shoot"):
 				if _mainReloadTimer > _mainReloadCooldown:
 					_mainReloadTimer=0 #Permet de gérer le reload
+					$FireSound.play()
 					mainShoot() 
 			if Input.is_action_just_pressed("player1_secShoot"):
 				if _secReloadTimer > _secReloadCooldown:
@@ -251,6 +252,7 @@ func processTurret(delta) -> void:
 			if Input.is_action_pressed("player2_shoot"):
 				if _mainReloadTimer > _mainReloadCooldown:
 					_mainReloadTimer=0
+					$FireSound.play()
 					mainShoot() 
 			if Input.is_action_just_pressed("player2_secShoot"):
 				if _secReloadTimer > _secReloadCooldown:
