@@ -3,7 +3,8 @@ class_name ArenaManager
 
 signal party_end(victorId)
 
-export (float) var matchDuration
+export (float) var matchDuration #180
+export (float) var tankScale #0.5
 
 
 var TANK_SCENE := preload("res://Scenes/Tank/Tank.tscn")
@@ -34,13 +35,17 @@ func inistanciateTank(tankOne : TankData, tankTwo : TankData) -> void:
 	active_map=MAP.instance()
 	add_child(active_map)
 	
+	#scale down tank
+	tank1.scale = Vector3(tankScale, tankScale, tankScale)
+	tank2.scale = Vector3(tankScale, tankScale, tankScale)
+	
 	#We spawn the tanks at the appropriate place :
 	tank1.translation = active_map.get_node("SpawnPoints/SpawnPoint1").translation
 	tank2.translation = active_map.get_node("SpawnPoints/SpawnPoint2").translation
 	
 	#connect signals
 	tank1.connect("tank_killed", self, "on_tank1_killed")
-	tank1.connect("tank_killed", self, "on_tank2_killed")
+	tank2.connect("tank_killed", self, "on_tank2_killed")
 	
 	clock.speed_scale = 60 / matchDuration
 	clock.frame = 0
@@ -79,11 +84,6 @@ func on_tank2_killed()-> void:
 	tank2.queue_free()
 	active_map.queue_free()
 	pass
-
-func bs_clear() -> void: #use in a patchwork for loading end screen, should no be used
-	tank1.queue_free()
-	tank2.queue_free()
-	active_map.queue_free()
 
 
 func _on_Clock_animation_finished():
