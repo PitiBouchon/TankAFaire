@@ -1,6 +1,149 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Scenes/Menus/MainMenu/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Textures/UI/Button/ready-btn.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Textures/UI/Button/ready-btn-pressed.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Textures/title.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 275, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 4 )
+region = Rect2( 550, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 4 )
+region = Rect2( 825, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 4 )
+region = Rect2( 1100, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 1375, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
+region = Rect2( 1650, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 4 )
+region = Rect2( 1925, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 4 )
+region = Rect2( 2200, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 4 )
+region = Rect2( 2475, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 4 )
+region = Rect2( 2750, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 4 )
+region = Rect2( 3025, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 4 )
+region = Rect2( 3300, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 4 )
+region = Rect2( 3575, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 4 )
+region = Rect2( 3850, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 4 )
+region = Rect2( 4125, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 4 )
+region = Rect2( 4400, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 4 )
+region = Rect2( 4675, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 4 )
+region = Rect2( 4950, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 4 )
+region = Rect2( 5225, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 4 )
+region = Rect2( 5500, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 4 )
+region = Rect2( 5775, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 4 )
+region = Rect2( 6050, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 4 )
+region = Rect2( 6325, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 4 )
+region = Rect2( 6600, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 4 )
+region = Rect2( 6875, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 4 )
+region = Rect2( 7150, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 4 )
+region = Rect2( 7425, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 4 )
+region = Rect2( 7700, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 4 )
+region = Rect2( 7975, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 4 )
+region = Rect2( 8250, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 4 )
+region = Rect2( 8525, 0, 275, 211 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 4 )
+region = Rect2( 8800, 0, 275, 211 )
+
+[sub_resource type="SpriteFrames" id=36]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="InputEventAction" id=1]
 action = "player1_select"
@@ -18,35 +161,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.2
-anchor_right = 0.5
-anchor_bottom = 0.2
-margin_left = -100.0
-margin_top = -20.0
-margin_right = 100.0
-margin_bottom = 20.0
-text = "TankAFaire"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="NewGameButton" type="Button" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer"]
+position = Vector2( 511, 200 )
+frames = SubResource( 36 )
+frame = 25
+speed_scale = 3.0
+playing = true
+
+[node name="NewGameButton" type="TextureButton" parent="CanvasLayer"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.75
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -100.0
-margin_top = -20.0
-margin_right = 100.0
-margin_bottom = 20.0
+anchor_bottom = 0.75
+margin_left = -101.0
+margin_top = -30.0
+margin_right = 99.0
+margin_bottom = 30.0
 shortcut = SubResource( 2 )
-text = "New Game"
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="NewGameButton" to="." method="on_new_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/NewGameButton" to="." method="on_new_game_pressed"]
