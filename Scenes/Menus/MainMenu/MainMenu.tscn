@@ -166,9 +166,8 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer"]
 position = Vector2( 511, 200 )
 frames = SubResource( 36 )
-frame = 25
+frame = 5
 speed_scale = 3.0
-playing = true
 
 [node name="NewGameButton" type="TextureButton" parent="CanvasLayer"]
 anchor_left = 0.5
