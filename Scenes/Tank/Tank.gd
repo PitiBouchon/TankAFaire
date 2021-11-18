@@ -309,3 +309,6 @@ func damage(dmg) -> void:
 
 func getHealthRatio() -> float:
 	return _health/_maxHealth 
+
+func getDashDuration() -> float:
+	return clamp(_dashTimer, 0, _dashCooldown) / _dashCooldown
