@@ -12,6 +12,7 @@ var gameState
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	OS.window_fullscreen = true
 	on_load_main_menu()
 	pass # Replace with function body.
 

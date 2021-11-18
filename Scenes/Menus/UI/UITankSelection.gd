@@ -29,7 +29,8 @@ onready var tracks : UIElementSelection = $Tracks
 onready var turret : UIElementSelection = $Turret
 onready var gun : UIElementSelection = $Gun
 
-onready var ready  : ColorRect = $ReadyBG
+onready var readyOn  : TextureRect = $ReadyBG_ON
+onready var readyOff : TextureRect = $ReadyBG_OFF
 
 var playerSelection : Vector2 = Vector2.ZERO
 var selectionLimit : Vector2 = Vector2(6,2)
@@ -150,13 +151,18 @@ func updateDisplay() -> void:
 
 
 func readyUnselect() -> void:
-	ready.color = Color(0.5, 0.5, 0.5)
+	readyOff.show()
+	readyOn.hide()
+	readyOff.self_modulate = Color(1,1,1)
 
 func readySelect() -> void:
-	ready.color = Color(0.7, 0.7, 0)
+	readyOff.hide()
+	readyOn.show()
 
 func readyValidated() -> void:
-	ready.color = Color(0, 0.7, 0)
+	readyOff.show()
+	readyOn.hide()
+	readyOff.self_modulate = Color(0.5, 1, 0.5)
 
 func signalEmiter() -> void:
 	match playerSelection.x:

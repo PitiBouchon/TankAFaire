@@ -10,6 +10,10 @@ var tank1
 var tank2 
 
 
+onready var healthP1 : TextureProgress = $UI/Health_P1
+onready var healthP2 : TextureProgress = $UI/Health_P2
+
+
 func inistanciateTank(tankOne : TankData, tankTwo : TankData) -> void:
 	tank1 = TANK_SCENE.instance() 
 	add_child(tank1)
@@ -26,6 +30,11 @@ func inistanciateTank(tankOne : TankData, tankTwo : TankData) -> void:
 	tank1.translation = active_map.get_node("SpawnPoints/SpawnPoint1").translation
 	tank2.translation = active_map.get_node("SpawnPoints/SpawnPoint2").translation
 	return
+
+
+func _process(delta):
+	healthP1.value = 100 * tank1.getHealthRatio()
+	healthP2.value = 100 * tank2.getHealthRatio()
 
 
 func getTankPositionByID(id : int) -> Vector3:

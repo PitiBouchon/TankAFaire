@@ -17,6 +17,7 @@ var _playerNumber : int
 
 var _speed : float
 var _health : float
+var _maxHealth : float
 var _armor : float
 var _target : Vector3
 
@@ -54,7 +55,8 @@ func loadData(data : TankData, player : int) -> void:
 	_playerNumber = player
 	
 	_speed = computeSpeed(data)
-	_health = computeHealth(data)
+	_maxHealth = computeHealth(data)
+	_health = _maxHealth
 	_armor = computeArmor(data)
 	
 	_chassiDirection = Vector3.ZERO
@@ -301,3 +303,5 @@ func damage(dmg) -> void:
 		get_tree().reload_current_scene() #POUR LE MOMENT SI UN TANK MEURE LE JEU CRASH - DONC ON QUITTE
 	pass
 
+func getHealthRatio() -> float:
+	return _health/_maxHealth 
