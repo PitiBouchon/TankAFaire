@@ -69,7 +69,3 @@ func on_party_end(victorId):
 	pass
 
 
-func bs_load_end_screen(victorId):
-	$ArenaManager.bs_clear()
-	on_party_end(victorId)
-	pass

@@ -40,7 +40,7 @@ func inistanciateTank(tankOne : TankData, tankTwo : TankData) -> void:
 	
 	#connect signals
 	tank1.connect("tank_killed", self, "on_tank1_killed")
-	tank1.connect("tank_killed", self, "on_tank2_killed")
+	tank2.connect("tank_killed", self, "on_tank2_killed")
 	
 	clock.speed_scale = 60 / matchDuration
 	clock.frame = 0
@@ -79,11 +79,6 @@ func on_tank2_killed()-> void:
 	tank2.queue_free()
 	active_map.queue_free()
 	pass
-
-func bs_clear() -> void: #use in a patchwork for loading end screen, should no be used
-	tank1.queue_free()
-	tank2.queue_free()
-	active_map.queue_free()
 
 
 func _on_Clock_animation_finished():

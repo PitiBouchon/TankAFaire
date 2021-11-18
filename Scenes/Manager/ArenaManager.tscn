@@ -351,7 +351,7 @@ __meta__ = {
 position = Vector2( 0, 30 )
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 62 )
-frame = 57
+frame = 51
 playing = true
 
 [connection signal="animation_finished" from="UI/TimerControl/Clock" to="." method="_on_Clock_animation_finished"]

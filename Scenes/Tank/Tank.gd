@@ -304,12 +304,7 @@ func damage(dmg) -> void:
 	_health -= max(dmg - _armor, _minDmg)
 	$DamageSound.play()
 	if _health<=0:
-		#emit_signal("tank_killed")
-		# used because broken signal, should not be used
-		var gameManager = get_tree().get_root().get_node("GameManager")
-		gameManager.bs_load_end_screen(3-_playerNumber)
-		
-		
+		emit_signal("tank_killed")
 	pass
 
 func getHealthRatio() -> float:
