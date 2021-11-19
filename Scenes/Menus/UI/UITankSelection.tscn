@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Menus/UI/UITankSelection.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Menus/UI/UIElementSelection.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Textures/UI/Button/OK-btn-pressed.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Textures/UI/Button/OK-btn.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Menus/UI/StatsBars.tscn" type="PackedScene" id=5]
 
 [node name="UITankSelection" type="Control"]
 anchor_right = 1.0
@@ -22,61 +23,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Stats" type="Label" parent="."]
+[node name="StatsBars" parent="." instance=ExtResource( 5 )]
 anchor_left = 0.05
-anchor_top = 0.05
-anchor_right = 1.0
-anchor_bottom = 0.2
-text = "Statistiques"
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="HP" type="Label" parent="Stats"]
-anchor_top = 0.15
-anchor_right = 1.0
-anchor_bottom = 0.3
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="Weight" type="Label" parent="Stats"]
-anchor_top = 0.3
-anchor_right = 1.0
-anchor_bottom = 0.45
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="HorsePower" type="Label" parent="Stats"]
-anchor_top = 0.45
-anchor_right = 1.0
-anchor_bottom = 0.6
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="ArmorType" type="Label" parent="Stats"]
-anchor_top = 0.6
-anchor_right = 1.0
-anchor_bottom = 0.75
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="Mobility" type="Label" parent="Stats"]
-anchor_top = 0.75
-anchor_right = 1.0
-anchor_bottom = 0.9
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
+anchor_top = 0.02
+anchor_right = 0.95
+anchor_bottom = 0.22
 
 [node name="Chassi" parent="." instance=ExtResource( 2 )]
 anchor_top = 0.2
@@ -101,7 +52,7 @@ selectionName = "Tourelle"
 [node name="Gun" parent="." instance=ExtResource( 2 )]
 anchor_top = 0.68
 anchor_bottom = 0.8
-selectionName = "Gun"
+selectionName = "Canon"
 
 [node name="ReadyBG_ON" type="TextureRect" parent="."]
 anchor_left = 0.2

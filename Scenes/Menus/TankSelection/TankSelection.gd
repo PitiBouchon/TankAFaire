@@ -11,6 +11,11 @@ export (Array, Resource) var trackList
 export (Array, Resource) var turretList
 export (Array, Resource) var gunList
 
+export (Vector2) var healthLimits
+export (Vector2) var damageLimits
+export (Vector2) var speedLimits
+export (Vector2) var armorLimits
+
 onready var uiPlayer1 : UITankSelection = $UI/UIPlayer1
 onready var uiPlayer2 : UITankSelection = $UI/UIPlayer2
 onready var tankPlayer1 : DisplayTank = $Player1
@@ -59,13 +64,7 @@ func updatePlayer1() -> void:
 	tankOne.turret = turretList[player1Indexes[3]]
 	tankOne.gun = gunList[player1Indexes[4]]
 	
-	var hp : float = tankOne.chassi.healthPoints + tankOne.turret.healthPoints
-	var weight : float = tankOne.chassi.weight + tankOne.engine.weight + tankOne.track.weight + tankOne.turret.weight + tankOne.gun.weight
-	var power : float = tankOne.engine.horsePower
-	var armor : float = 0.5 * tankOne.chassi.armor + 0.5 * tankOne.turret.armor - tankOne.track.armorLoss
-	var maniability : int = tankOne.track.speedFactor
-	
-	uiPlayer1.updateStats(hp, weight, power, armor, maniability)
+	updateStats(tankOne, uiPlayer1)
 	
 	tankPlayer1.updateDisplay(tankOne)
 	
@@ -77,16 +76,35 @@ func updatePlayer2() -> void:
 	tankTwo.turret = turretList[player2Indexes[3]]
 	tankTwo.gun = gunList[player2Indexes[4]]
 	
-	var hp : float = tankTwo.chassi.healthPoints + tankTwo.turret.healthPoints
-	var weight : float = tankTwo.chassi.weight + tankTwo.engine.weight + tankTwo.track.weight + tankTwo.turret.weight + tankTwo.gun.weight
-	var power : float = tankTwo.engine.horsePower
-	var armor : float = 0.5 * tankTwo.chassi.armor + 0.5 * tankTwo.turret.armor - tankTwo.track.armorLoss
-	var maniability : int = tankTwo.track.speedFactor
-	
-	uiPlayer2.updateStats(hp, weight, power, armor, maniability)
+	updateStats(tankTwo, uiPlayer2)
 	
 	tankPlayer2.updateDisplay(tankTwo)
 
+
+func updateStats(tank : TankData, ui : UITankSelection) -> void:
+	
+	var health : float = tank.chassi.healthPoints + tank.turret.healthPoints
+	var damage : float = 0.5 * tank.turret.secBulletData.damage + 0.5 * tank.gun.bulletData.damage 
+	var weight : float = tank.chassi.weight + tank.turret.weight + tank.engine.weight + tank.track.weight + tank.gun.weight
+	var speed : float = 100 + tank.engine.horsePower + tank.track.speedFactor - weight
+	var armor : float = 0.5 * tank.chassi.armor + 0.5 * tank.turret.armor - tank.track.armorLoss 
+	
+	var healthRatio : float = (health - healthLimits.x) / (healthLimits.y - healthLimits.x)
+	healthRatio = clamp(healthRatio, 0, 1)
+	
+	var damageRatio : float = (damage - damageLimits.x) / (damageLimits.y - damageLimits.x)
+	damageRatio = clamp(damageRatio, 0, 1)
+	
+	var speedRatio : float = (speed - speedLimits.x) / (speedLimits.y - speedLimits.x)
+	speedRatio = clamp(speedRatio, 0, 1)
+	
+	var armorRatio : float = (armor - armorLimits.x) / (armorLimits.y - armorLimits.x)
+	armorRatio = clamp(armorRatio, 0, 1) 
+	
+	
+	ui.updateStats(healthRatio, damageRatio, speedRatio, armorRatio)
+	
+	pass
 
 # player 1 -------------------------------
 
