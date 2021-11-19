@@ -342,6 +342,10 @@ engineList = [ ExtResource( 2 ) ]
 trackList = [ ExtResource( 4 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 26 ) ]
 turretList = [ ExtResource( 13 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 27 ), ExtResource( 23 ) ]
 gunList = [ ExtResource( 9 ), ExtResource( 20 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 19 ), ExtResource( 21 ) ]
+healthLimits = Vector2( 200, 500 )
+damageLimits = Vector2( 10, 60 )
+speedLimits = Vector2( 75, 150 )
+armorLimits = Vector2( 0, 30 )
 
 [node name="Camera" type="Camera" parent="."]
 far = 150.0
@@ -377,7 +381,7 @@ __meta__ = {
 position = Vector2( 0, 30 )
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 61 )
-frame = 53
+frame = 26
 playing = true
 
 [node name="BackgroundWall" parent="." instance=ExtResource( 17 )]
