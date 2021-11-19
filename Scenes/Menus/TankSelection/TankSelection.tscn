@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://Scenes/Menus/TankSelection/TankSelection.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/TankElement/Engine/Engine_basic_1.tres" type="Resource" id=2]
@@ -21,244 +21,305 @@
 [ext_resource path="res://Ressources/TankElement/Gun/Gun_Ventile.tres" type="Resource" id=19]
 [ext_resource path="res://Ressources/TankElement/Gun/Gun_DiggyHole.tres" type="Resource" id=20]
 [ext_resource path="res://Ressources/TankElement/Gun/Gun_Multi.tres" type="Resource" id=21]
+[ext_resource path="res://Assets/Sound/EcranTitre_Sélection - Blood-Sweat-and-Tears.mp3" type="AudioStream" id=22]
 
 [sub_resource type="AtlasTexture" id=1]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 0, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=2]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 247, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=3]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 494, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=4]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 741, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=5]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 988, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=6]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 1235, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=7]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 1482, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=8]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 1729, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=9]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 1976, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=10]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 2223, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=11]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 2470, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=12]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 2717, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=13]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 2964, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=14]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 3211, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=15]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 3458, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=16]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 3705, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=17]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 3952, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=18]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 4199, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=19]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 4446, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=20]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 4693, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=21]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 4940, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=22]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 5187, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=23]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 5434, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=24]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 5681, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=25]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 5928, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=26]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 6175, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=27]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 6422, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=28]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 6669, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=29]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 6916, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=30]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 7163, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=31]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 7410, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=32]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 7657, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=33]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 7904, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=34]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 8151, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=35]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 8398, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=36]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 8645, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=37]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 8892, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=38]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 9139, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=39]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 9386, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=40]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 9633, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=41]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 9880, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=42]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 10127, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=43]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 10374, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=44]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 10621, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=45]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 10868, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=46]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 11115, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=47]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 11362, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=48]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 11609, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=49]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 11856, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=50]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 12103, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=51]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 12350, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=52]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 12597, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=53]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 12844, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=54]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 13091, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=55]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 13338, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=56]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 13585, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=57]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 13832, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=58]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 14079, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=59]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 14326, 0, 247, 247 )
 
 [sub_resource type="AtlasTexture" id=60]
+flags = 4
 atlas = ExtResource( 18 )
 region = Rect2( 14573, 0, 247, 247 )
 
@@ -312,11 +373,16 @@ __meta__ = {
 position = Vector2( 0, 30 )
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 61 )
-frame = 27
+frame = 34
 playing = true
 
 [node name="BackgroundWall" parent="." instance=ExtResource( 17 )]
 transform = Transform( 3.4, 0, 0, 0, 3.4, 0, 0, 0, 1, 0, 0, -30 )
+
+[node name="SoundBackground" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+volume_db = -5.0
+autoplay = true
 
 [connection signal="next_chassi" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_next_chassi"]
 [connection signal="next_engine" from="UI/UIPlayer1" to="." method="_on_UIPlayer1_next_engine"]
