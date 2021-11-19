@@ -14,6 +14,9 @@ onready var gun = $Turret/Canon
 onready var mainMuzzle = $Turret/Canon/mainMuzzle
 onready var secMuzzle = $Turret/secMuzzle
 
+onready var startDashSound = $StartDashSound
+onready var middleDashSound = $MidleDashSound
+onready var endDashSound = $EndDashSound
 
 var _playerNumber : int
 
@@ -179,12 +182,16 @@ func processChassi(delta) -> void:
 	
 	if _playerNumber == 1 :
 		if Input.is_action_just_pressed("player1_dash") && !_isDashing && _dashTimer > _dashCooldown:
+			startDashSound.play()
+			# middleDashSound.play()
 			_isDashing = true
 			_dashTimer = 0
 			_dashDirection = _chassiDirection
 	
 	if _playerNumber == 2 :
 		if Input.is_action_just_pressed("player2_dash") && !_isDashing && _dashTimer > _dashCooldown:
+			startDashSound.play()
+			# middleDashSound.play()
 			_isDashing = true
 			_dashTimer = 0
 			_dashDirection = _chassiDirection
@@ -201,8 +208,10 @@ func processChassi(delta) -> void:
 		
 
 func processDash() -> void:
-	if _dashTimer > _dashDuration :
+	if _dashTimer > _dashDuration:
 		_isDashing = false
+		# middleDashSound.stop()
+		endDashSound.play()
 		return
 	move_and_slide(_dashDirection * _dashSpeed )
 	pass
