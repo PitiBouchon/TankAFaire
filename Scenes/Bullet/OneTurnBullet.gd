@@ -18,11 +18,17 @@ var _tolerance : float = 1
 #On calcule la cible avec 3-playerNumber, qui vaut 1 si le tireur est 2 et 2 si le tireur est 1.
 func initBullet(pos : Vector3, dir : Vector3, playerNumber : int, data : BulletData) -> void :
 	.initBullet(pos, dir, playerNumber, data)
+	
+	_dir = _dir.normalized()
+	
 	_target = 3-playerNumber
 	var bulletData : OneTurnBulletData = data as OneTurnBulletData
+	
+	
 	mesh.rotation.y = acos(_dir.z)
 	if _dir.x != 0 :
 		mesh.rotation *= sign(_dir.x)
+	
 	if bulletData == null :
 		queue_free()
 	else:
@@ -44,9 +50,12 @@ func _process(delta):
 			_dir = _dir.rotated(Vector3.UP, deg2rad(90))
 		else :
 			_dir = _dir.rotated(Vector3.UP, deg2rad(-90))
+			
+		
 		mesh.rotation.y = acos(_dir.z)
 		if _dir.x != 0 :
 			mesh.rotation *= sign(_dir.x)
+		
 	translate(_dir * _speed * delta)
 
 

@@ -10,11 +10,15 @@ var _speed : float = 0
 #override
 func initBullet(pos : Vector3, dir : Vector3, playerNumber : int, data : BulletData) -> void :
 	.initBullet(pos, dir, playerNumber, data)
+	
+	_dir = _dir.normalized()
+	
 	var bulletData : BasicBulletData = data as BasicBulletData
 	if bulletData == null:
 		queue_free()
 	else :
 		_speed = bulletData.speed
+	
 	
 	mesh.rotation.y = acos(_dir.z)
 	if _dir.x != 0 :
