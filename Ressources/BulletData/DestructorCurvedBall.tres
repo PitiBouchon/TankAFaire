@@ -1,15 +1,17 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://Ressources/BulletData/OneTurnBulletData.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Bullet/OneTurnBullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Ressources/BulletData/BellCurvedBulletData.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Bullet/BellCurveBullet.tscn" type="PackedScene" id=2]
 
 [resource]
 script = ExtResource( 1 )
 bulletScene = ExtResource( 2 )
-damage = 20.0
+damage = 60.0
 relativeToGun = false
 stopTurretRotation = false
 turretFreezTime = 0.0
 stopChassiMovement = false
 chassiFreezTime = 0.0
-speed = 25.0
+height = 20.0
+distance = 18.0
+duration = 0.5

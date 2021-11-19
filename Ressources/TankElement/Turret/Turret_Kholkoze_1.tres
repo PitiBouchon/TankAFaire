@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Ressources/TankElement/Turret/TurretData.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Meshs/Turret_Kholkoze.tres" type="ArrayMesh" id=2]
-[ext_resource path="res://Ressources/BulletData/BasicBullet1.tres" type="Resource" id=3]
+[ext_resource path="res://Ressources/BulletData/TripleShotOneTurn.tres" type="Resource" id=3]
 
 [resource]
 script = ExtResource( 1 )

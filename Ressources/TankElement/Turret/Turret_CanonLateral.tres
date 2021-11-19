@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://Ressources/TankElement/Turret/TurretData.gd" type="Script" id=1]
-[ext_resource path="res://Ressources/BulletData/BasicBullet1.tres" type="Resource" id=2]
+[ext_resource path="res://Ressources/BulletData/SideShoot1.tres" type="Resource" id=2]
 [ext_resource path="res://Assets/Meshs/Turret_CanonLateral.tres" type="ArrayMesh" id=3]
 
 [resource]
@@ -16,4 +16,4 @@ turretPosOffset = Vector3( 0, 0, 0 )
 gunPos = Vector3( 0, 0, 0 )
 secGunPos = Vector3( 0, 0, 0 )
 secBulletData = ExtResource( 2 )
-secCooldown = 0.8
+secCooldown = 0.6

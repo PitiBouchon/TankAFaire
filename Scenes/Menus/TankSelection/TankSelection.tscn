@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://Scenes/Menus/TankSelection/TankSelection.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/TankElement/Engine/Engine_basic_1.tres" type="Resource" id=2]
@@ -22,6 +22,10 @@
 [ext_resource path="res://Ressources/TankElement/Gun/Gun_DiggyHole.tres" type="Resource" id=20]
 [ext_resource path="res://Ressources/TankElement/Gun/Gun_Multi.tres" type="Resource" id=21]
 [ext_resource path="res://Assets/Sound/EcranTitre_Sélection - Blood-Sweat-and-Tears.mp3" type="AudioStream" id=22]
+[ext_resource path="res://Ressources/TankElement/Turret/Turret_MortierMine.tres" type="Resource" id=23]
+[ext_resource path="res://Ressources/TankElement/Chassi/Chassi_DiggyHole.tres" type="Resource" id=24]
+[ext_resource path="res://Ressources/TankElement/Track/Track_DiggyHole.tres" type="Resource" id=26]
+[ext_resource path="res://Ressources/TankElement/Turret/Turret_CanonLateral.tres" type="Resource" id=27]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -333,10 +337,10 @@ animations = [ {
 
 [node name="TankSelection" type="Spatial"]
 script = ExtResource( 1 )
-chassiList = [ ExtResource( 14 ), ExtResource( 10 ), ExtResource( 6 ) ]
+chassiList = [ ExtResource( 14 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 24 ) ]
 engineList = [ ExtResource( 2 ) ]
-trackList = [ ExtResource( 4 ), ExtResource( 11 ), ExtResource( 12 ) ]
-turretList = [ ExtResource( 13 ), ExtResource( 15 ), ExtResource( 16 ) ]
+trackList = [ ExtResource( 4 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 26 ) ]
+turretList = [ ExtResource( 13 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 27 ), ExtResource( 23 ) ]
 gunList = [ ExtResource( 9 ), ExtResource( 20 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 19 ), ExtResource( 21 ) ]
 
 [node name="Camera" type="Camera" parent="."]
@@ -373,7 +377,7 @@ __meta__ = {
 position = Vector2( 0, 30 )
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 61 )
-frame = 34
+frame = 53
 playing = true
 
 [node name="BackgroundWall" parent="." instance=ExtResource( 17 )]

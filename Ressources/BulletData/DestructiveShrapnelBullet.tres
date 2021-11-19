@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Ressources/BulletData/SharpnelBulletData.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Bullet/BasicBulletSchrapnel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Ressources/BulletData/DestructiveShrapnelRealBullet.tres" type="Resource" id=3]
+
+[resource]
+script = ExtResource( 1 )
+bulletScene = ExtResource( 2 )
+damage = 50.0
+relativeToGun = false
+stopTurretRotation = false
+turretFreezTime = 0.0
+stopChassiMovement = false
+chassiFreezTime = 0.0
+childData = ExtResource( 3 )
+speed = 10.0
+detonationTime = 1.2
