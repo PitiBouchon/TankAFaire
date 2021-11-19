@@ -54,7 +54,6 @@ func _input(event):
 			playerSelection.y = clamp(playerSelection.y - 1, 0, selectionLimit.y - 1)
 		
 		if event.is_action_pressed("player1_select"):
-			$SelectSound.play()
 			signalEmiter()
 		
 	elif !playerReady && playerNumber == 2 :
@@ -169,36 +168,42 @@ func readyValidated() -> void:
 func signalEmiter() -> void:
 	match playerSelection.x:
 		0.0:
+			SoundManager.play_button2()
 			if playerSelection.y == 0:
 				emit_signal("previous_chassi")
 			else:
 				emit_signal("next_chassi")
 			
 		1.0:
+			SoundManager.play_button2()
 			if playerSelection.y == 0:
 				emit_signal("previous_engine")
 			else:
 				emit_signal("next_engine")
 			
 		2.0:
+			SoundManager.play_button2()
 			if playerSelection.y == 0:
 				emit_signal("previous_track")
 			else:
 				emit_signal("next_track")
 			
 		3.0:
+			SoundManager.play_button2()
 			if playerSelection.y == 0:
 				emit_signal("previous_turret")
 			else:
 				emit_signal("next_turret")
 			
 		4.0:
+			SoundManager.play_button2()
 			if playerSelection.y == 0:
 				emit_signal("previous_gun")
 			else:
 				emit_signal("next_gun")
 			
 		5.0:
+			SoundManager.play_button3()
 			playerReady = true
 			emit_signal("player_ready")
 	pass

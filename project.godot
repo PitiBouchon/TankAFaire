@@ -198,6 +198,10 @@ config/name="TankAFaire"
 run/main_scene="res://Scenes/Manager/GameManager.tscn"
 config/icon="res://logo CELL.png"
 
+[autoload]
+
+SoundManager="*res://Scenes/Sound/SoundManager.tscn"
+
 [display]
 
 window/dpi/allow_hidpi=true
