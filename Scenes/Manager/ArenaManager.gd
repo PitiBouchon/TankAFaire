@@ -9,7 +9,9 @@ export (float) var tankScale #0.5
 
 var TANK_SCENE := preload("res://Scenes/Tank/Tank.tscn")
 
-var MAP := preload("res://Scenes/Arenas/Arena2.tscn")
+var MAP_1 := preload("res://Scenes/Arenas/Arena2.tscn")
+var MAP_2 := preload("res://Scenes/Arenas/Arena3.tscn")
+var MAP_LIST = [MAP_1,MAP_2]
 
 var active_map
 var tank1 : Tank
@@ -32,7 +34,10 @@ func inistanciateTank(tankOne : TankData, tankTwo : TankData) -> void:
 	add_child(tank2)
 	tank2.loadData(tankTwo, 2)
 	
-	active_map=MAP.instance()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var num = rng.randi_range(0, 1)
+	active_map=MAP_LIST[num].instance()
 	add_child(active_map)
 	
 	#scale down tank
