@@ -11,7 +11,8 @@ var TANK_SCENE := preload("res://Scenes/Tank/Tank.tscn")
 
 var MAP_1 := preload("res://Scenes/Arenas/Arena2.tscn")
 var MAP_2 := preload("res://Scenes/Arenas/Arena3.tscn")
-var MAP_LIST = [MAP_1,MAP_2]
+var MAP_3 := preload("res://Scenes/Arenas/Arena4.tscn")
+var MAP_LIST = [MAP_1,MAP_2, MAP_3]
 
 var active_map
 var tank1 : Tank
@@ -36,7 +37,7 @@ func inistanciateTank(tankOne : TankData, tankTwo : TankData) -> void:
 	
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var num = rng.randi_range(0, 1)
+	var num = rng.randi_range(0, 2)
 	active_map=MAP_LIST[num].instance()
 	add_child(active_map)
 	
