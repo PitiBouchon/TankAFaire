@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource( 1 )
-weight = 10.0
-horsePower = 400.0
-dashDistance = 30.0
-dashSpeed = 60.0
-dashCooldown = 5.0
+weight = 30.0
+horsePower = 60.0
+dashDistance = 12.0
+dashSpeed = 24.0
+dashCooldown = 3.0

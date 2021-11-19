@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource( 1 )
-weight = 10.0
-armor = 10.0
-healthPoints = 10.0
+weight = 30.0
+armor = 20.0
+healthPoints = 400.0
 chassiMesh = ExtResource( 2 )
 chassiRotation = Vector3( 0, 0, 0 )
 chassiPos = Vector3( 0, 0, 0 )
