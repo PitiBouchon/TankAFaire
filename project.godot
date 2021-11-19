@@ -64,6 +64,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Tank/DisplayTank.gd"
 }, {
+"base": "Control",
+"class": "EndScreen",
+"language": "GDScript",
+"path": "res://Scenes/Menus/EndScreen/EndScreen.gd"
+}, {
 "base": "Resource",
 "class": "EngineData",
 "language": "GDScript",
@@ -171,6 +176,7 @@ _global_script_class_icons={
 "BurstBulletData": "",
 "ChassiData": "",
 "DisplayTank": "",
+"EndScreen": "",
 "EngineData": "",
 "GameManager": "",
 "GitAPI": "",

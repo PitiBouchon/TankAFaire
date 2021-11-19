@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/Menus/EndScreen/EndScreen.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Textures/Text/P2.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Textures/Text/P1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Textures/Text/thx-for-playing.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Textures/Text/victory.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Textures/Text/defeat.png" type="Texture" id=6]
+[ext_resource path="res://logo CELL.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Textures/soire.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Textures/logo_white.png" type="Texture" id=9]
+
+[node name="EndScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+timeOut = 10.0
+
+[node name="Thx-for-playing" type="TextureRect" parent="."]
+anchor_left = 0.1
+anchor_top = 0.8
+anchor_right = 0.9
+anchor_bottom = 0.9
+texture = ExtResource( 4 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="P1" type="TextureRect" parent="."]
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.3
+anchor_bottom = 0.2
+texture = ExtResource( 3 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="P1_Victory" type="TextureRect" parent="."]
+anchor_left = 0.1
+anchor_top = 0.3
+anchor_right = 0.4
+anchor_bottom = 0.4
+texture = ExtResource( 5 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="P1_Defeat" type="TextureRect" parent="."]
+anchor_left = 0.1
+anchor_top = 0.3
+anchor_right = 0.4
+anchor_bottom = 0.4
+texture = ExtResource( 6 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="P2" type="TextureRect" parent="."]
+anchor_left = 0.7
+anchor_top = 0.1
+anchor_right = 0.8
+anchor_bottom = 0.2
+texture = ExtResource( 2 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="P2_Victory" type="TextureRect" parent="."]
+anchor_left = 0.6
+anchor_top = 0.3
+anchor_right = 0.9
+anchor_bottom = 0.4
+texture = ExtResource( 5 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="P2_Defeat" type="TextureRect" parent="."]
+anchor_left = 0.6
+anchor_top = 0.3
+anchor_right = 0.9
+anchor_bottom = 0.4
+texture = ExtResource( 6 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlIcons" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LogoCELL" type="Sprite" parent="ControlIcons"]
+position = Vector2( -300, 0 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 7 )
+
+[node name="LogoSoire" type="Sprite" parent="ControlIcons"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 8 )
+
+[node name="LogoMinTech" type="Sprite" parent="ControlIcons"]
+position = Vector2( 300, 0 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 9 )
