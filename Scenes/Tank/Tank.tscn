@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Tank/Tank.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sound/bruitferrailledegat.mp3" type="AudioStream" id=2]
 [ext_resource path="res://Assets/Sound/tirtank.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sound/findash.mp3" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Sound/dureedash.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Sound/demarragedash.mp3" type="AudioStream" id=6]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 6.5427, 6.10001, 5.14948 )
@@ -33,3 +36,13 @@ pitch_scale = 1.3
 
 [node name="FireSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+
+[node name="StartDashSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -1.0
+
+[node name="MidleDashSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="EndDashSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )

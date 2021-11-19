@@ -25,7 +25,6 @@ onready var dashP1 : AnimatedSprite = $UI/DashControlP1/Dash_P1
 onready var dashP2 : AnimatedSprite = $UI/DashControlP2/Dash_P2
 onready var clock : AnimatedSprite = $UI/TimerControl/Clock
 
-
 func inistanciateTank(tankOne : TankData, tankTwo : TankData) -> void:
 	tank1 = TANK_SCENE.instance() 
 	add_child(tank1)
@@ -91,7 +90,7 @@ func on_tank2_killed()-> void:
 
 
 func _on_Clock_animation_finished():
-	var gameManager = get_tree().get_root().get_node("GameManager")
+	SoundManager.play_gong()
 	if tank1.getHealthRatio() == tank2.getHealthRatio():
 		emit_signal("party_end", 0)
 	elif tank1.getHealthRatio() > tank2.getHealthRatio():
