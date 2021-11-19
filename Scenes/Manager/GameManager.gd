@@ -57,7 +57,6 @@ func on_tank_selected(tankOne : TankData, tankTwo : TankData):
 	pass
 
 func on_party_end(victorId):
-	print("signal recived")
 	if gameState == GAME_STATE.MAIN_GAME:
 		$ArenaManager.queue_free()
 	

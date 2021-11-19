@@ -94,7 +94,7 @@ transform = Transform( 13.65, 0, 0, 0, -3.23464e-07, -1, 0, 7.77, -4.5897e-08, 0
 texture = ExtResource( 5 )
 
 [node name="WreckedTank2" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1.49012e-07, 0, -1, 0, 1, 0, 1, 0, 1.49012e-07, 28, 4, -1 )
+transform = Transform( 1.49012e-07, 0, -1, 0, 1, 0, 1, 0, 1.49012e-07, 28, 1, -1 )
 
 [node name="WreckedTank" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -25, 3, 13 )

@@ -76,7 +76,6 @@ func getTankPositionByID(id : int) -> Vector3:
 
 
 func on_tank1_killed()-> void:
-	print("tank 1 killed")
 	emit_signal("party_end", 2)
 	tank1.queue_free()
 	tank2.queue_free()
@@ -84,7 +83,6 @@ func on_tank1_killed()-> void:
 	pass
 
 func on_tank2_killed()-> void:
-	print("tank 2 killed")
 	emit_signal("party_end", 1)
 	tank1.queue_free()
 	tank2.queue_free()
@@ -95,9 +93,9 @@ func on_tank2_killed()-> void:
 func _on_Clock_animation_finished():
 	var gameManager = get_tree().get_root().get_node("GameManager")
 	if tank1.getHealthRatio() == tank2.getHealthRatio():
-		gameManager.bs_load_end_screen(0)
+		emit_signal("party_end", 0)
 	elif tank1.getHealthRatio() > tank2.getHealthRatio():
-		gameManager.bs_load_end_screen(1)
+		emit_signal("party_end", 1)
 	elif tank1.getHealthRatio() < tank2.getHealthRatio():
-		gameManager.bs_load_end_screen(2)
+		emit_signal("party_end", 2)
 	pass 
