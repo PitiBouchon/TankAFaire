@@ -1,12 +1,14 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Scenes/Menus/MainMenu/MainMenu.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Textures/UI/Button/ready-btn.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Textures/UI/Button/ready-btn-pressed.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Textures/UI/Button/start-btn-p2-pressed.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Textures/UI/Button/start-btn-p2.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Textures/title.png" type="Texture" id=4]
 [ext_resource path="res://logo CELL.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Textures/soire.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Textures/logo_white.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Textures/UI/Button/start-btn-p1.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Textures/UI/Button/start-btn-p1-pressed.png" type="Texture" id=9]
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 4 )
@@ -148,11 +150,41 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="InputEventAction" id=1]
-action = "player1_select"
+[sub_resource type="AtlasTexture" id=37]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 139, 84 )
 
-[sub_resource type="ShortCut" id=2]
-shortcut = SubResource( 1 )
+[sub_resource type="AtlasTexture" id=38]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 139, 0, 139, 84 )
+
+[sub_resource type="SpriteFrames" id=39]
+animations = [ {
+"frames": [ SubResource( 37 ), SubResource( 38 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 139, 84 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 139, 0, 139, 84 )
+
+[sub_resource type="SpriteFrames" id=42]
+animations = [ {
+"frames": [ SubResource( 40 ), SubResource( 41 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -163,6 +195,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+selectionTimeout = 5.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -191,7 +224,7 @@ position = Vector2( 300, 0 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 7 )
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="ControlTitle" type="Control" parent="CanvasLayer"]
 anchor_left = 0.5
 anchor_top = 0.3
 anchor_right = 0.5
@@ -200,27 +233,51 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/Control"]
+[node name="TitleSprite" type="AnimatedSprite" parent="CanvasLayer/ControlTitle"]
 frames = SubResource( 36 )
-frame = 10
+frame = 21
 speed_scale = 3.0
 playing = true
 
-[node name="NewGameButton" type="TextureButton" parent="CanvasLayer"]
-anchor_left = 0.5
+[node name="ControlP1" type="Control" parent="CanvasLayer"]
+anchor_left = 0.3
 anchor_top = 0.85
-anchor_right = 0.5
+anchor_right = 0.3
 anchor_bottom = 0.85
-margin_left = -101.0
-margin_top = -30.0
-margin_right = 99.0
-margin_bottom = 30.0
-shortcut = SubResource( 2 )
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 3 )
-expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="CanvasLayer/NewGameButton" to="." method="on_new_game_pressed"]
+[node name="Selected" type="AnimatedSprite" parent="CanvasLayer/ControlP1"]
+frames = SubResource( 39 )
+speed_scale = 5.0
+playing = true
+
+[node name="Unselected" type="Sprite" parent="CanvasLayer/ControlP1"]
+texture = ExtResource( 8 )
+
+[node name="ControlP2" type="Control" parent="CanvasLayer"]
+anchor_left = 0.7
+anchor_top = 0.85
+anchor_right = 0.7
+anchor_bottom = 0.85
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selected" type="AnimatedSprite" parent="CanvasLayer/ControlP2"]
+frames = SubResource( 42 )
+speed_scale = 5.0
+playing = true
+
+[node name="Unselected" type="Sprite" parent="CanvasLayer/ControlP2"]
+texture = ExtResource( 3 )
+
+[node name="P1Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="P2Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="P1Timer" to="." method="_on_P1Timer_timeout"]
+[connection signal="timeout" from="P2Timer" to="." method="_on_P2Timer_timeout"]
