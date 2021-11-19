@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource( 1 )
 bulletScene = ExtResource( 2 )
-damage = 0.0
+damage = 38.0
 relativeToGun = false
 stopTurretRotation = false
 turretFreezTime = 0.0

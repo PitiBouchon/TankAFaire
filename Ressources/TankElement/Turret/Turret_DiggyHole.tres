@@ -6,9 +6,9 @@
 
 [resource]
 script = ExtResource( 1 )
-weight = 10.0
-armor = 10.0
-healthPoints = 10.0
+weight = 9.0
+armor = 20.0
+healthPoints = 60.0
 turretMesh = ExtResource( 3 )
 turretRotation = Vector3( 0, 0, 0 )
 turretScale = Vector3( 1, 1, 1 )
@@ -16,4 +16,4 @@ turretPosOffset = Vector3( 0, 0, 0 )
 gunPos = Vector3( 0, 0.208, 1.328 )
 secGunPos = Vector3( 0, 0, 0 )
 secBulletData = ExtResource( 2 )
-secCooldown = 1.0
+secCooldown = 7.0
