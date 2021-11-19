@@ -14,5 +14,5 @@ turretFreezTime = 0.0
 stopChassiMovement = false
 chassiFreezTime = 0.0
 childData = ExtResource( 2 )
-speed = 20.0
-detonationTime = 3.0
+speed = 40.0
+detonationTime = 1.3

@@ -5,8 +5,9 @@
 
 [resource]
 script = ExtResource( 1 )
-weight = 10.0
-speedFactor = 1.0
+weight = 15.0
+speedFactor = 43.0
+armorLoss = 5.0
 trackMesh = ExtResource( 2 )
 trackPosOffset = Vector3( 0, 0, 0 )
 trackRotation = Vector3( 0, 0, 0 )
